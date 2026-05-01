@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+/* ── Google Sans ──────────────────────────────────────────────────────── */
+  --font-sans:    "Google Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Google Sans Display", "Google Sans", ui-sans-serif, sans-serif;
+  --font-mono:    "Google Sans Mono", ui-monospace, "Courier New", monospace;
+ 
+  /* Navy - Base #1F456E */
+  --color-navy-50: #eff3f7;
+  --color-navy-100: #dbe4ef;
+  --color-navy-200: #bccbdb;
+  --color-navy-300: #9cb1c7;
+  --color-navy-400: #7d98b3;
+  --color-navy-500: #1f456e; /* Primary Logo Color */
+  --color-navy-600: #1c3e63;
+  --color-navy-700: #16304d;
+  --color-navy-800: #0f2337;
+  --color-navy-900: #091521;
+  --color-navy-950: #050a11;
+
+  /* Steel - Base #94ACC3 */
+  --color-steel-50: #f4f7f9;
+  --color-steel-100: #e9eff3;
+  --color-steel-200: #d3dee7;
+  --color-steel-300: #bdcedb;
+  --color-steel-400: #a7bece;
+  --color-steel-500: #94acc3; /* Secondary Logo Color */
+  --color-steel-600: #7a91a8;
+  --color-steel-700: #607589;
+  --color-steel-800: #465866;
+  --color-steel-900: #2d3842;
+  --color-steel-950: #171d22;
+}
+
