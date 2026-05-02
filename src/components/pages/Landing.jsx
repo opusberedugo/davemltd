@@ -1,13 +1,21 @@
-// import AnimatedHero from '../animations/AnimatedHero';
-// import SvgDraw from '../animations/SvgDraw';
-// import ScrollGallery from '../animations/ScrollGallery';
-import logo from '../../assets/davem.svg' ;
+import React, { useState, useCallback } from 'react';
+import logo from '../../assets/davem.svg';
 import Hero from '../layout/Hero';
+import Navpill from '../navigation/NavPill';
+import About from '../layout/About';
 
 export default function Landing() {
+  const [heroDone, setHeroDone] = useState(false);
+
+  const handleAnimationComplete = useCallback(() => {
+    setHeroDone(true);
+  }, []);
+
   return (
     <>
-      <Hero /> 
+      <Navpill isVisible={heroDone} />
+      <Hero onAnimationComplete={handleAnimationComplete} />
+      <About />
     </>
   );
 }

@@ -33,3 +33,8 @@
   --color-steel-950: #171d22;
 }
 
+/* @layer base {
+  body {
+    overflow-x: hidden;
+  }
+} */

@@ -20,16 +20,19 @@ const paths = [
   "M1717.29,764.01c-4.65,0-9.25-.98-13.8-2.95s-8.58-4.87-12.06-8.71c-3.48-3.84-6.03-8.62-7.64-14.34l10.85-4.42c1.52,5.54,4.29,10.18,8.31,13.94,4.02,3.75,8.89,5.63,14.61,5.63,3.57,0,6.85-.65,9.85-1.94,2.99-1.29,5.4-3.19,7.24-5.69,1.83-2.5,2.75-5.54,2.75-9.11,0-3.22-.78-5.94-2.35-8.17-1.56-2.23-3.91-4.22-7.03-5.96-3.13-1.74-6.97-3.42-11.52-5.03l-6.03-2.14c-2.68-.98-5.38-2.17-8.11-3.55-2.73-1.38-5.23-3.08-7.5-5.09-2.28-2.01-4.09-4.42-5.43-7.24-1.34-2.81-2.01-6.14-2.01-9.98,0-4.64,1.25-8.89,3.75-12.73,2.5-3.84,5.94-6.92,10.32-9.25,4.38-2.32,9.42-3.48,15.14-3.48s11.01,1.09,15.08,3.28c4.06,2.19,7.28,4.78,9.65,7.77,2.37,2.99,3.95,5.74,4.76,8.24l-10.59,4.56c-.54-1.88-1.56-3.82-3.08-5.83-1.52-2.01-3.55-3.71-6.1-5.09-2.55-1.38-5.74-2.08-9.58-2.08-3.13,0-6.05.62-8.78,1.88-2.73,1.25-4.91,2.97-6.57,5.16-1.65,2.19-2.48,4.71-2.48,7.57,0,4.02,1.61,7.19,4.82,9.51,3.22,2.32,7.55,4.42,13,6.3l6.3,2.14c2.86.98,5.78,2.19,8.78,3.62,2.99,1.43,5.78,3.26,8.38,5.49,2.59,2.23,4.69,4.98,6.3,8.24,1.61,3.26,2.41,7.17,2.41,11.73,0,4.91-.96,9.13-2.88,12.66-1.92,3.53-4.45,6.41-7.57,8.64-3.13,2.23-6.54,3.87-10.25,4.89-3.71,1.03-7.35,1.54-10.92,1.54Z"
 ];
 
-export default function Hero() {
+export default function Hero({ onAnimationComplete }) {
   const [animationPhase, setAnimationPhase] = useState('hidden');
   const [showTracer, setShowTracer] = useState(false);
   const [showText, setShowText] = useState(false);
   const controls = useAnimation();
 
   useEffect(() => {
+    let isCancelled = false;
+
     const sequence = async () => {
       // 1. Start hidden
       await new Promise(r => setTimeout(r, 100));
+      if (isCancelled) return;
       
       // 2. Scale up and center container
       setAnimationPhase('center');
@@ -38,40 +41,43 @@ export default function Hero() {
       // 3. Start tracer dot
       setShowTracer(true);
 
-      // Wait specifically for the tracer to finish
-      await new Promise(r => setTimeout(r, 2000));
+      // Wait specifically for the drawing to fully finish (5.5s total duration)
+      await new Promise(r => setTimeout(r, 5500));
+      if (isCancelled) return;
       
       // 4. Scale down and shift to the left
       setAnimationPhase('topLeft');
 
       // Wait for the scaling and shifting transition to fully finish (1.2s duration)
       await new Promise(r => setTimeout(r, 1200));
+      if (isCancelled) return;
 
       // 5. Show leading text
       setShowText(true);
+      if (onAnimationComplete) {
+        onAnimationComplete();
+      }
     };
+    
     sequence();
+
+    return () => {
+      isCancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [controls]);
 
-  // Framer Motion variant for container positioning
+  // GPU-Accelerated Framer Motion variants
   const containerVariants = {
     hidden: { 
       opacity: 0, 
       scale: 0.5, 
-      x: "-50%", 
-      y: "-50%", 
-      top: "50%", 
-      left: "50%",
       width: "800px",
       maxWidth: "90vw"
     },
     center: {
       opacity: 1,
       scale: 1,
-      x: "-50%", 
-      y: "-50%", 
-      top: "50%", 
-      left: "50%",
       width: "800px",
       maxWidth: "90vw",
       transition: { duration: 0.8, ease: "backOut" }
@@ -81,10 +87,6 @@ export default function Hero() {
       scale: 1,
       width: "400px",
       maxWidth: "90vw",
-      x: "0%",
-      y: "0%",
-      top: "80px",
-      left: "80px",
       transition: { duration: 1.2, ease: [0.65, 0, 0.35, 1] }
     }
   };
@@ -100,21 +102,28 @@ export default function Hero() {
       pathLength: 1,
       fill: i === 0 ? "rgba(29, 77, 115, 1)" : "rgba(126, 161, 191, 1)",
       transition: {
-        pathLength: { duration: 1.5, ease: [0.47, 0, 0.745, 0.715], delay: i * 0.1 },
-        fill: { duration: 0.7, ease: [0.47, 0, 0.745, 0.715], delay: 1 + i * 0.1 }
+        pathLength: { duration: 3.0, ease: [0.47, 0, 0.745, 0.715], delay: i * 0.15 },
+        fill: { duration: 1.0, ease: [0.47, 0, 0.745, 0.715], delay: 2.0 + i * 0.15 }
       }
     })
   };
 
   return (
-    <section className="relative h-screen w-screen font-sans overflow-hidden bg-white">
-      <motion.div 
-        className="absolute pointer-events-none"
-        variants={containerVariants}
-        initial="hidden"
-        animate={animationPhase}
-      >
-        <svg 
+    <section className="relative h-screen w-full font-sans overflow-hidden bg-white">
+      {/* Wrapper that dynamically shifts alignment, allowing Framer Motion's 'layout' to interpolate perfectly */}
+      <div className={`absolute inset-0 pointer-events-none flex ${
+        animationPhase === 'topLeft' 
+          ? 'items-start justify-start pt-[80px] pl-[80px]' 
+          : 'items-center justify-center'
+      }`}>
+        <motion.div 
+          layout
+          className="relative pointer-events-none"
+          variants={containerVariants}
+          initial="hidden"
+          animate={animationPhase}
+        >
+          <svg 
           xmlns="http://www.w3.org/2000/svg" 
           viewBox="0 0 1749.42 764.51" 
           preserveAspectRatio="xMidYMid meet"
@@ -148,7 +157,7 @@ export default function Hero() {
           {showTracer && (
             <circle r="12" fill="var(--color-navy-500, #1d4d73)" filter="url(#glow)">
               <animateMotion 
-                dur="1.5s" 
+                dur="3.0s" 
                 repeatCount="1" 
                 fill="freeze"
                 calcMode="spline" 
@@ -159,14 +168,15 @@ export default function Hero() {
               <animate 
                 attributeName="opacity" 
                 values="1;1;0" 
-                keyTimes="0;0.9;1" 
-                dur="1.6s" 
+                keyTimes="0;0.95;1" 
+                dur="3.2s" 
                 fill="freeze" 
               />
             </circle>
           )}
         </svg>
       </motion.div>
+      </div>
 
       {/* Hero Paragraph - Slides up below the logo after logo reaches its position */}
       <motion.div
@@ -192,7 +202,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20, scale: 0.95 }}
           animate={showText ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 20, scale: 0.95 }}
           transition={{ duration: 0.5, ease: "easeOut", delay: 1.0 }}
-          className="mt-8 ml-4 px-8 py-4 text-navy-600 bg-mist-light border-steel-500 border-2 rounded-full font-semibold transition-all shadow-lg hover:bg-steel-500 hover:text-white">
+          className="mt-8 ml-4 px-8 py-4 text-steel-500 border-steel-500 border-2 rounded-full font-semibold transition-all shadow-lg hover:bg-steel-500 hover:text-white">
           Get Quote
         </motion.button>
       </motion.div>
