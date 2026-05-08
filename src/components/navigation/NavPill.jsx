@@ -20,8 +20,8 @@ export default function Navpill({ isVisible = true }) {
     : "w-fit px-4 py-2 border-navy-500 border-2 rounded-full overflow-hidden flex bg-navy-500 text-white font-medium shadow-lg transition-colors duration-300";
 
   const linkClasses = isScrolled
-    ? "px-4 py-2 hover:text-navy-800 transition-colors duration-300"
-    : "px-4 py-2 hover:text-steel-500 transition-colors duration-300";
+    ? "px-4 py-2 hover:font-bold hover:text-navy-800 transition-all duration-300"
+    : "px-4 py-2 hover:text-steel-500 transition-all duration-300";
 
   return (
     <AnimatePresence>

@@ -1,5 +1,4 @@
 import React, { useState, useCallback } from 'react';
-import logo from '../../assets/davem.svg';
 import Hero from '../layout/Hero';
 import Navpill from '../navigation/NavPill';
 import About from '../layout/About';
@@ -17,5 +16,5 @@ export default function Landing() {
       <Hero onAnimationComplete={handleAnimationComplete} />
       <About />
     </>
-  );
+  );  
 }
