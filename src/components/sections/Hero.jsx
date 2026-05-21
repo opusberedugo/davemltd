@@ -186,7 +186,7 @@ export default function Hero({ onAnimationComplete }) {
         className="absolute top-[280px] left-[80px] w-full max-w-3xl text-left"
       >
         <p className="text-lg font-sans leading-relaxed text-balance text-black">
-          Empowering Businesses with Precision Energy and Infrastructure Solutions—From Oil Spill Response to Advanced Marine Logistics, we deliver reliability and scalable solutions for your enterprise.
+          Davem Energy Resources Limited delivers cost-effective Engineering, Marine, Procurement, and Logistics Solutions, backed by over 36 years of heritage in oil spill response, soil remediation, and environmental protection.
         </p>
 
         {/* CTA Button */}

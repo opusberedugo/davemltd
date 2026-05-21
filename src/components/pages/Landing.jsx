@@ -1,7 +1,8 @@
 import React, { useState, useCallback } from 'react';
-import Hero from '../layout/Hero';
+import Hero from '../sections/Hero';
 import Navpill from '../navigation/NavPill';
-import About from '../layout/About';
+import About from '../sections/About';
+import Services from '../sections/Services';
 
 export default function Landing() {
   const [heroDone, setHeroDone] = useState(false);
@@ -15,6 +16,7 @@ export default function Landing() {
       <Navpill isVisible={heroDone} />
       <Hero onAnimationComplete={handleAnimationComplete} />
       <About />
+      <Services />
     </>
   );  
 }
