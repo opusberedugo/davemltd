@@ -58,6 +58,8 @@ export default function Services() {
   const [activeServiceIndex, setActiveServiceIndex] = useState(0);
   const serviceRefs = useRef([]);
   const mobileTabContainerRef = useRef(null);
+  const desktopTabContainerRef = useRef(null);
+  const desktopTabRefs = useRef([]);
 
   // IntersectionObserver to set active service index during scrolling
   useEffect(() => {
@@ -103,6 +105,27 @@ export default function Services() {
     }
   }, [activeServiceIndex]);
 
+  // Sync desktop tab container scrolling to align active tab at the top
+  useEffect(() => {
+    const container = desktopTabContainerRef.current;
+    const activeTab = desktopTabRefs.current[activeServiceIndex];
+    if (container && activeTab) {
+      const containerRect = container.getBoundingClientRect();
+      const activeTabRect = activeTab.getBoundingClientRect();
+      
+      if (containerRect.height > 0 && activeTabRect.height > 0) {
+        // Use relative bounding rect offset adjusted by current scroll position
+        const relativeTop = activeTabRect.top - containerRect.top + container.scrollTop;
+        
+        // Scroll so that the active tab is positioned at the top of the container
+        container.scrollTo({
+          top: relativeTop,
+          behavior: "smooth"
+        });
+      }
+    }
+  }, [activeServiceIndex]);
+
   const handleTabClick = (index) => {
     const target = serviceRefs.current[index];
     if (target) {
@@ -113,13 +136,46 @@ export default function Services() {
     }
   };
 
+  const getDialStyles = (index) => {
+    const diff = Math.abs(index - activeServiceIndex);
+    if (diff === 0) {
+      return {
+        opacity: 1,
+        scale: 1.05,
+        colorClass: "text-navy-600 font-bold",
+        indicatorOpacity: "opacity-100 translate-x-0",
+      };
+    } else if (diff === 1) {
+      return {
+        opacity: 0.75,
+        scale: 0.96,
+        colorClass: "text-slate-600 font-semibold",
+        indicatorOpacity: "opacity-0 -translate-x-2",
+      };
+    } else if (diff === 2) {
+      return {
+        opacity: 0.45,
+        scale: 0.90,
+        colorClass: "text-slate-500 font-medium",
+        indicatorOpacity: "opacity-0 -translate-x-4",
+      };
+    } else {
+      return {
+        opacity: 0.25,
+        scale: 0.85,
+        colorClass: "text-slate-400 font-normal",
+        indicatorOpacity: "opacity-0 -translate-x-4",
+      };
+    }
+  };
+
   return (
     <section className="bg-steel-100 py-20 px-8 md:px-16 lg:px-24"> 
       <div className="max-w-7xl mx-auto">
         <Grid className="grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
           {/* Left Column: Title, Intro & Service Navigation (Sticky on Desktop) */}
-          <div className="lg:col-span-5 flex flex-col lg:sticky lg:top-28 lg:self-start lg:max-h-[calc(100vh-10rem)]">
+          <div className="lg:col-span-5 flex flex-col lg:sticky lg:top-24 lg:self-start lg:max-h-[calc(100vh-6rem)]">
             <span className="text-steel-600 font-sans font-medium text-sm tracking-widest uppercase mb-2">
               (our capabilities)
             </span>
@@ -132,41 +188,50 @@ export default function Services() {
               Guided by over 36 years of industry heritage and an unwavering commitment to environmental safety, Davem Energy Resources Limited delivers specialized, cost-effective solutions across the West African energy corridor.
             </p>
 
-            {/* Interactive Vertical Tab Selector for Desktop */}
-            <div className="hidden lg:flex flex-col mt-10 border-t border-steel-300/60">
-              {servicesData.map((service, index) => {
-                const isActive = index === activeServiceIndex;
-                return (
-                  <div
-                    key={service.id}
-                    onClick={() => handleTabClick(index)}
-                    className="border-b border-steel-300/60 py-4 cursor-pointer select-none group transition-all duration-300"
-                  >
-                    <div className="flex items-center justify-between">
-                      <span
-                        className={`font-sans text-base md:text-lg transition-all duration-300 ${
-                          isActive
-                            ? "text-navy-500 font-semibold translate-x-2"
-                            : "text-steel-600/90 font-normal group-hover:text-navy-500 group-hover:translate-x-1"
-                        }`}
-                      >
-                        {service.shortTitle}
-                      </span>
-                      
-                      {/* Interactive indicator arrow */}
-                      <span
-                        className={`text-lg transition-all duration-300 mr-2 ${
-                          isActive 
-                            ? "text-navy-500 opacity-100 translate-x-0" 
-                            : "text-steel-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0"
-                        }`}
-                      >
-                        →
-                      </span>
+            {/* Interactive Vertical Dial Selector for Desktop */}
+            <div className="hidden lg:block relative mt-8 w-full">
+              {/* Scrollable Container */}
+              <div
+                ref={desktopTabContainerRef}
+                className="h-[320px] overflow-y-auto overflow-x-hidden [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] flex flex-col"
+              >
+                {servicesData.map((service, index) => {
+                  const styles = getDialStyles(index);
+                  return (
+                    <div
+                      key={service.id}
+                      ref={(el) => (desktopTabRefs.current[index] = el)}
+                      onClick={() => handleTabClick(index)}
+                      style={{
+                        opacity: styles.opacity,
+                        transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+                      }}
+                      className="border-b border-steel-300/30 last:border-b-0 py-4 cursor-pointer select-none shrink-0"
+                    >
+                      <div className="flex items-center justify-between transition-all duration-300">
+                        <span
+                          style={{
+                            transform: `scale(${styles.scale})`,
+                            transformOrigin: "left center",
+                            display: "inline-block",
+                            transition: "transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease",
+                          }}
+                          className={`font-sans text-base md:text-lg ${styles.colorClass}`}
+                        >
+                          {service.shortTitle}
+                        </span>
+                        
+                        <span className={`text-lg transition-all duration-300 mr-2 text-navy-500 ${styles.indicatorOpacity}`}>
+                          →
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+
+                {/* Bottom spacer to allow scrolling the last items to the top */}
+                <div className="h-[280px] shrink-0" />
+              </div>
             </div>
           </div>
           {/* End of Left Column */}
