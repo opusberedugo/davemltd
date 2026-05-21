@@ -63,13 +63,18 @@ export default function About() {
           className="flex w-[300vw] flex-1 min-h-0"
         >
           <div className="w-screen px-24 h-full overflow-y-auto pb-12 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-            <div className="max-w-full">
-              <h2 className="text-steel-300 text-2xl font-semibold uppercase"> Who are we?</h2>
-              <p className="text-white mt-4 text-lg"> Davem Energy Resources Limited (RC 845000) is a multifaceted indigenous company incorporated under the Companies and Allied Matters Act of 1990 to deliver cost-effective Engineering, Marine, Procurement, and Logistics Solutions. </p>
-              <p className="text-white mt-4 text-lg"> We have been at the forefront of oil spill control, containment, and clean-up, assisting both Government agencies and private sector organizations in setting up and managing oil pollution response facilities. We were operators of the largest Oil Spill Response organization in Nigeria and the entire West Coast of Africa called Clean Nigeria Associates (CNA) with over 36 years of Experience. </p>
+            <motion.div 
+              className="max-w-full"
+              variants={containerVariants}
+              initial="hidden"
+              animate={activeIndex === 0 ? "visible" : "hidden"}
+            >
+              <motion.h2 variants={itemVariants} className="text-steel-300 text-2xl font-semibold uppercase"> Who are we?</motion.h2>
+              <motion.p variants={itemVariants} className="text-white mt-4 text-lg"> Davem Energy Resources Limited (RC 845000) is a multifaceted indigenous company incorporated under the Companies and Allied Matters Act of 1990 to deliver cost-effective Engineering, Marine, Procurement, and Logistics Solutions. </motion.p>
+              <motion.p variants={itemVariants} className="text-white mt-4 text-lg"> We have been at the forefront of oil spill control, containment, and clean-up, assisting both Government agencies and private sector organizations in setting up and managing oil pollution response facilities. We were operators of the largest Oil Spill Response organization in Nigeria and the entire West Coast of Africa called Clean Nigeria Associates (CNA) with over 36 years of Experience. </motion.p>
 
-              <p className="text-white mt-4 text-lg"> Davem Energy Resources Limited has been active in waste management, soil remediation, EIA, contingency plans, capacity building, manpower development, and training. We pride ourselves in protecting the Nigerian environment. </p>
-            </div>
+              <motion.p variants={itemVariants} className="text-white mt-4 text-lg"> Davem Energy Resources Limited has been active in waste management, soil remediation, EIA, contingency plans, capacity building, manpower development, and training. We pride ourselves in protecting the Nigerian environment. </motion.p>
+            </motion.div>
           </div>
           
           <div className="w-screen px-24 h-full overflow-y-auto pb-12 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
