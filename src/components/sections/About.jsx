@@ -62,18 +62,94 @@ export default function About() {
           transition={{ type: "spring", stiffness: 200, damping: 25, mass: 0.5 }}
           className="flex w-[300vw] flex-1 min-h-0"
         >
-          <div className="w-screen px-24 h-full overflow-y-auto pb-12 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+          <div className="w-screen px-12 md:px-24 h-full overflow-y-auto pb-12 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             <motion.div 
-              className="max-w-full"
+              className="max-w-7xl mx-auto"
               variants={containerVariants}
               initial="hidden"
               animate={activeIndex === 0 ? "visible" : "hidden"}
             >
-              <motion.h2 variants={itemVariants} className="text-steel-300 text-2xl font-semibold uppercase"> Who are we?</motion.h2>
-              <motion.p variants={itemVariants} className="text-white mt-4 text-lg"> Davem Energy Resources Limited (RC 845000) is a multifaceted indigenous company incorporated under the Companies and Allied Matters Act of 1990 to deliver cost-effective Engineering, Marine, Procurement, and Logistics Solutions. </motion.p>
-              <motion.p variants={itemVariants} className="text-white mt-4 text-lg"> We have been at the forefront of oil spill control, containment, and clean-up, assisting both Government agencies and private sector organizations in setting up and managing oil pollution response facilities. We were operators of the largest Oil Spill Response organization in Nigeria and the entire West Coast of Africa called Clean Nigeria Associates (CNA) with over 36 years of Experience. </motion.p>
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
+                
+                {/* Left Column: Portrait Operative Photo with Floating Avatars Badge */}
+                <motion.div variants={itemVariants} className="lg:col-span-5 flex flex-col h-full">
+                  <div className="relative w-full aspect-[4/5] lg:aspect-auto lg:h-full rounded-[2rem] overflow-hidden shadow-2xl border border-white/10 bg-navy-800">
+                    <img
+                      src="/about_davem_marine.png"
+                      alt="About Davem Energy Marine Logistics"
+                      className="w-full h-full object-cover"
+                    />
+                    
+                    {/* Floating Badge */}
+                    <div className="absolute bottom-6 left-6 bg-white/95 backdrop-blur-md rounded-2xl p-5 shadow-2xl border border-slate-200/50 flex items-center gap-4 max-w-[260px] z-10">
+                      <div className="text-4xl font-black text-navy-600 tracking-tight shrink-0 font-display">
+                        36+
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-[10px] font-sans font-bold text-navy-600 uppercase tracking-widest leading-none">
+                          Years Of
+                        </span>
+                        <span className="text-slate-800 font-sans font-extrabold text-sm leading-tight mt-1">
+                          Trustworthy Partnerships
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
 
-              <motion.p variants={itemVariants} className="text-white mt-4 text-lg"> Davem Energy Resources Limited has been active in waste management, soil remediation, EIA, contingency plans, capacity building, manpower development, and training. We pride ourselves in protecting the Nigerian environment. </motion.p>
+                {/* Right Column: Premium Light Card with Content */}
+                <motion.div variants={itemVariants} className="lg:col-span-7 flex flex-col justify-center">
+                  <div className="bg-slate-50 text-slate-800 rounded-[2rem] p-8 lg:p-10 flex flex-col justify-between shadow-2xl border border-slate-200/40 h-full">
+                    <div>
+                      <span className="text-navy-600 font-sans font-semibold text-xs tracking-widest uppercase mb-2 block">
+                        (who we are)
+                      </span>
+                      
+                      <h2 className="text-navy-950 font-display font-bold text-2xl md:text-3xl lg:text-4xl leading-tight">
+                        Pioneering Sustainable Energy & Environmental Protection
+                      </h2>
+                      
+                      <p className="text-slate-600 text-sm mt-4 leading-relaxed font-sans">
+                        Davem Energy Resources Limited (RC 845000) is a premier indigenous Nigerian company delivering cost-effective Engineering, Marine, Procurement, and Logistics Solutions across the West African energy corridor.
+                      </p>
+
+                      <p className="text-slate-600 text-sm mt-3 leading-relaxed font-sans">
+                        As former operators of the largest Oil Spill Response organization in West Africa (Clean Nigeria Associates - CNA), we have been at the forefront of environmental stewardship, waste management, and soil remediation.
+                      </p>
+
+                      <div className="mt-6">
+                        <button className="px-6 py-3 bg-navy-600 hover:bg-navy-700 text-white font-sans text-sm font-semibold rounded-full transition-all duration-300 shadow-md cursor-pointer flex items-center gap-2 w-fit">
+                          Read More <span className="text-base">→</span>
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Grid of two vertical cards at the bottom */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                      <div className="bg-white rounded-2xl p-6 border border-slate-200/50 shadow-md flex flex-col items-start text-left">
+                        <div className="w-12 h-12 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 mb-4 shrink-0">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                          </svg>
+                        </div>
+                        <h4 className="text-slate-900 font-bold text-sm">Environmental Shield</h4>
+                        <p className="text-slate-500 text-xs mt-2 leading-relaxed">Advanced oil spill control, soil remediation, and waste management facilities.</p>
+                      </div>
+
+                      <div className="bg-white rounded-2xl p-6 border border-slate-200/50 shadow-md flex flex-col items-start text-left">
+                        <div className="w-12 h-12 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 mb-4 shrink-0">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                          </svg>
+                        </div>
+                        <h4 className="text-slate-900 font-bold text-sm">Marine & Logistics</h4>
+                        <p className="text-slate-500 text-xs mt-2 leading-relaxed">Comprehensive vessel chartering, procurement, and deepwater logistics support.</p>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+
+              </div>
             </motion.div>
           </div>
           
