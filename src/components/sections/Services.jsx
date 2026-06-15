@@ -22,7 +22,7 @@ const servicesData = [
     title: "Marine Logistics / Supply Services",
     shortTitle: "Marine Logistics",
     description: "DAVEM is among the most efficient indigenous companies in Inland Waterway Transportation and Deepwater/Offshore Operations. With a fleet of tugboats, crew boats, utility vessels, service vessels, and barges, we support both downstream and upstream sub-sectors. Our capabilities include offshore equipment supply, vessel chartering for seismic/construction operations, geophysical subsea services, marine logistics transportation, vessel management, and expert marine consultancy.",
-    image: "https://images.unsplash.com/photo-1506521788701-1e13a4e83f2a?q=80&w=1200&auto=format&fit=crop"
+    image: "/marine_logistics.png"
   },
   {
     id: "procurement-management",
