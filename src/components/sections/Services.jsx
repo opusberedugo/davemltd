@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react"; 
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import Grid from "../layout/Grid";
 
 const servicesData = [
@@ -293,10 +294,16 @@ export default function Services() {
 
                   {/* Actions */}
                   <div className="flex flex-wrap gap-4 mt-8">
-                    <button className="px-6 py-3 bg-navy-500 text-white font-sans text-sm font-semibold rounded-full hover:bg-navy-600 transition-all duration-300 shadow-sm cursor-pointer hover:shadow-md active:scale-95">
+                    <Link 
+                      to={`/services/${service.id}`}
+                      className="px-6 py-3 bg-navy-500 text-white font-sans text-sm font-semibold rounded-full hover:bg-navy-600 transition-all duration-300 shadow-sm cursor-pointer hover:shadow-md active:scale-95 flex items-center justify-center text-decoration-none"
+                    >
                       Details Services
-                    </button>
-                    <button className="px-6 py-3 border border-steel-400 text-steel-700 bg-transparent font-sans text-sm font-semibold rounded-full hover:bg-steel-200 hover:text-navy-700 transition-all duration-300 shadow-sm cursor-pointer active:scale-95">
+                    </Link>
+                    <button 
+                      onClick={() => window.location.href = `mailto:info@davemenergy.com?subject=Appointment Booking - ${service.title}`}
+                      className="px-6 py-3 border border-steel-400 text-steel-700 bg-transparent font-sans text-sm font-semibold rounded-full hover:bg-steel-200 hover:text-navy-700 transition-all duration-300 shadow-sm cursor-pointer active:scale-95"
+                    >
                       Book Appointment
                     </button>
                   </div>

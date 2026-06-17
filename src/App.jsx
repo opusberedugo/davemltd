@@ -1,9 +1,23 @@
-import { useState } from 'react'
-// import Landing from './components/pages/DemoLanding'  
+import { Routes, Route, useParams, useNavigate, useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
 import Landing from './components/pages/Landing'  
+import ServicesPage from './components/pages/ServicesPage'
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
+
+function ServicesPageWrapper() {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  return <ServicesPage serviceId={id} onBack={() => navigate('/')} />;
+}
 
 function App() {
-  const [count, setCount] = useState(0)
 
   // return (
   //   <>
@@ -117,7 +131,11 @@ function App() {
   // )
   return (
     <>
-      <Landing />
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/services/:id" element={<ServicesPageWrapper />} />
+      </Routes>
     </>
   )
 }
