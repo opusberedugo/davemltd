@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function ServicesHero({ service }) {
   return (
-    <section className="relative pt-32 lg:pt-40 min-h-[80vh] lg:min-h-[90vh] flex items-center bg-navy-950 overflow-hidden">
+    <section id="services-hero" className="relative pt-32 lg:pt-40 min-h-[80vh] lg:min-h-[90vh] flex items-center bg-navy-950 overflow-hidden">
       {/* Full-width image background with linear-radial mask overlay */}
       <div className="absolute inset-0">
         <img

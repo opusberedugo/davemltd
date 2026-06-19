@@ -8,7 +8,15 @@ const paths = [logoPath];
 export default function Hero({ onAnimationComplete }) {
   const [animationPhase, setAnimationPhase] = useState('hidden');
   const [showText, setShowText] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const controls = useAnimation();
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     let isCancelled = false;
@@ -48,25 +56,25 @@ export default function Hero({ onAnimationComplete }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [controls]);
 
-  // GPU-Accelerated Framer Motion variants (Sizes reduced by 25%)
+  // GPU-Accelerated Framer Motion variants (Responsive sizing)
   const containerVariants = {
     hidden: { 
       opacity: 0, 
       scale: 0.5, 
-      width: "600px", // 800px * 0.75
+      width: isMobile ? "300px" : "600px",
       maxWidth: "90vw"
     },
     center: {
       opacity: 1,
       scale: 1,
-      width: "600px", // 800px * 0.75
+      width: isMobile ? "300px" : "600px",
       maxWidth: "90vw",
       transition: { duration: 0.8, ease: "backOut" }
     },
     topLeft: {
       opacity: 1,
       scale: 1,
-      width: "300px", // 400px * 0.75
+      width: isMobile ? "150px" : "300px",
       maxWidth: "90vw",
       transition: { duration: 1.2, ease: [0.65, 0, 0.35, 1] }
     }
@@ -94,7 +102,7 @@ export default function Hero({ onAnimationComplete }) {
       {/* Wrapper that dynamically shifts alignment, allowing Framer Motion's 'layout' to interpolate perfectly */}
       <div className={`absolute inset-0 pointer-events-none flex ${
         animationPhase === 'topLeft' 
-          ? 'items-start justify-start pt-[80px] pl-[80px]' 
+          ? 'items-start justify-start pt-6 pl-6 md:pt-[80px] md:pl-[80px]' 
           : 'items-center justify-center'
       }`}>
         <motion.div 
@@ -200,28 +208,32 @@ export default function Hero({ onAnimationComplete }) {
         initial={{ opacity: 0, y: 30 }}
         animate={showText ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="absolute top-[300px] left-[80px] w-full max-w-3xl text-left"
+        className="absolute top-[180px] md:top-[300px] left-6 md:left-[80px] w-[calc(100%-3rem)] md:w-full md:max-w-3xl text-left"
       >
-        <p className="text-lg font-sans leading-relaxed text-balance text-black">
+        <p className="text-base md:text-lg font-sans leading-relaxed text-balance text-black">
           Davem Energy Resources Limited delivers cost-effective Engineering, Marine, Procurement, and Logistics Solutions, backed by over 36 years of heritage in oil spill response, soil remediation, and environmental protection.
         </p>
 
         {/* CTA Buttons */}
-        <motion.button
-          initial={{ opacity: 0, y: 20, scale: 0.95 }}
-          animate={showText ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 20, scale: 0.95 }}
-          transition={{ duration: 0.5, ease: "easeOut", delay: 1.0 }}
-          className="mt-8 px-8 py-4 text-white border-navy-600 border-2 bg-navy-600 rounded-full font-semibold transition-all shadow-lg hover:bg-navy-700 hover:border-navy-700 hover:text-white cursor-pointer">
-          Learn More
-        </motion.button>
-       
-        <motion.button
-          initial={{ opacity: 0, y: 20, scale: 0.95 }}
-          animate={showText ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 20, scale: 0.95 }}
-          transition={{ duration: 0.5, ease: "easeOut", delay: 1.0 }}
-          className="mt-8 ml-4 px-8 py-4 text-steel-500 border-steel-500 border-2 rounded-full font-semibold transition-all shadow-lg hover:bg-steel-500 hover:text-white cursor-pointer">
-          Get Quote
-        </motion.button>
+        <div className="flex flex-wrap gap-4 mt-8">
+          <motion.button
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            animate={showText ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 20, scale: 0.95 }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 1.0 }}
+            className="px-6 py-3 md:px-8 md:py-4 text-sm md:text-base text-white border-navy-600 border-2 bg-navy-600 rounded-full font-semibold transition-all shadow-lg hover:bg-navy-700 hover:border-navy-700 hover:text-white cursor-pointer"
+          >
+            Learn More
+          </motion.button>
+         
+          <motion.button
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            animate={showText ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 20, scale: 0.95 }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 1.0 }}
+            className="px-6 py-3 md:px-8 md:py-4 text-sm md:text-base text-steel-500 border-steel-500 border-2 rounded-full font-semibold transition-all shadow-lg hover:bg-steel-500 hover:text-white cursor-pointer"
+          >
+            Get Quote
+          </motion.button>
+        </div>
       </motion.div>
     </section>
   );

@@ -240,7 +240,8 @@ export default function Services() {
           {/* Sticky Mobile Navigation Tabs */}
           <div 
             ref={mobileTabContainerRef}
-            className="lg:hidden sticky top-[75px] bg-steel-100/95 backdrop-blur z-20 border-b border-steel-300/60 -mx-8 px-8 py-3 flex gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+            id="mobile-capabilities-tabs"
+            className="lg:hidden sticky top-0 bg-steel-100/95 backdrop-blur z-20 border-b border-steel-300/60 -mx-8 px-8 py-3 flex gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
           >
             {servicesData.map((service, index) => {
               const isActive = index === activeServiceIndex;

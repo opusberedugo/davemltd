@@ -1,7 +1,58 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ChevronDown } from "lucide-react";
+
+// Custom path-animating hamburger menu icon that morphs into a close (X) icon
+function HamburgerIcon({ isOpen, isScrolled }) {
+  const strokeColor = isScrolled ? "#1F456E" : "#FFFFFF"; // navy-500 or white
+
+  const lineVariants = {
+    top: {
+      closed: { rotate: 0, y: 0 },
+      open: { rotate: 45, y: 6 }
+    },
+    middle: {
+      closed: { opacity: 1 },
+      open: { opacity: 0 }
+    },
+    bottom: {
+      closed: { rotate: 0, y: 0 },
+      open: { rotate: -45, y: -6 }
+    }
+  };
+
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" className="cursor-pointer">
+      <motion.path
+        stroke={strokeColor}
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        initial={{ d: "M 4 6 L 20 6" }}
+        animate={{ d: isOpen ? "M 5 5 L 19 19" : "M 4 6 L 20 6" }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+      />
+      <motion.path
+        stroke={strokeColor}
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        initial={{ opacity: 1, d: "M 4 12 L 20 12" }}
+        animate={{ 
+          opacity: isOpen ? 0 : 1,
+          d: "M 4 12 L 20 12"
+        }}
+        transition={{ duration: 0.2 }}
+      />
+      <motion.path
+        stroke={strokeColor}
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        initial={{ d: "M 4 18 L 20 18" }}
+        animate={{ d: isOpen ? "M 5 19 L 19 5" : "M 4 18 L 20 18" }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+      />
+    </svg>
+  );
+}
 
 // High-fidelity Davem Logo Icon Component (graphic D-shape path from davem.svg without text)
 export function DavemLogo({ className = "", isDark = false }) {
@@ -25,69 +76,230 @@ export function DavemLogo({ className = "", isDark = false }) {
 
 export default function ServicesNavPill() {
   const { scrollY } = useScroll();
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [navTheme, setNavTheme] = useState("transparent"); // "transparent" | "blue" | "white"
+  
+  // Dynamic Scroll Direction & Hide
+  const [isScrollingDown, setIsScrollingDown] = useState(false);
+  const lastScrollY = useRef(0);
+
+  // Mobile Menu state coordination for sequential animation flow
+  const [isMenuExpanded, setIsMenuExpanded] = useState(false);
+  const [isTextVisible, setIsTextVisible] = useState(false);
+  const [isIconOpen, setIsIconOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect if mobile layout (tailwinds lg is 1024px)
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Update theme based on scroll position dynamically
+  const updateNavTheme = (latestScrollY) => {
+    const heroEl = document.getElementById("services-hero");
+    const ctaEl = document.getElementById("services-cta");
+
+    const heroHeight = heroEl ? heroEl.offsetHeight : window.innerHeight * 0.8;
+    const ctaOffset = ctaEl ? ctaEl.offsetTop : document.body.offsetHeight;
+
+    if (latestScrollY < heroHeight - 80) {
+      setNavTheme("transparent");
+    } else if (latestScrollY + 80 >= ctaOffset) {
+      setNavTheme("white");
+    } else {
+      setNavTheme("blue");
+    }
+  };
+
+  useEffect(() => {
+    const handleInitialTheme = () => {
+      updateNavTheme(window.scrollY);
+    };
+    handleInitialTheme();
+    window.addEventListener("resize", handleInitialTheme);
+    return () => window.removeEventListener("resize", handleInitialTheme);
+  }, []);
+
+  // Sequential closing flow: Hide text -> shrink container -> morph icon back
+  const closeMenu = () => {
+    setIsTextVisible(false);
+    
+    setTimeout(() => {
+      setIsMenuExpanded(false);
+      
+      setTimeout(() => {
+        setIsIconOpen(false);
+        setIsMounted(false);
+      }, 350); // wait for width spring animation to complete
+    }, 150); // wait for opacity fade transition to complete
+  };
+
+  // Opening flow: morph icon, expand container, mount and reveal text
+  const openMenu = () => {
+    setIsMounted(true);
+    setIsIconOpen(true);
+    setIsMenuExpanded(true);
+    setIsTextVisible(true);
+  };
+
+  const handleToggle = () => {
+    if (isMenuExpanded) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  };
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    // Invert colors/styles when scrolled past 80px
-    if (latest > 80) {
-      setIsScrolled(true);
-    } else {
-      setIsScrolled(false);
+    updateNavTheme(latest);
+
+    // Hide-on-scroll logic for mobile
+    const currentScrollY = latest;
+    if (currentScrollY > lastScrollY.current && currentScrollY > 120) {
+      setIsScrollingDown(true);
+      if (isMenuExpanded) {
+        closeMenu(); // Auto-collapse mobile menu on scroll down
+      }
+    } else if (currentScrollY < lastScrollY.current) {
+      setIsScrollingDown(false);
     }
+    lastScrollY.current = currentScrollY;
   });
 
-  const containerClasses = isScrolled 
-    ? "px-6 py-2.5 border border-steel-200/50 rounded-full flex items-center gap-6 bg-white/95 backdrop-blur-md text-navy-900 shadow-lg transition-all duration-300"
-    : "px-6 py-2.5 border border-white/10 rounded-full flex items-center gap-6 bg-navy-900/40 backdrop-blur-md text-white shadow-lg transition-all duration-300";
+  // Dynamic theme configurations
+  let containerClasses = "";
+  let linkClasses = "";
+  let mobileContainerClasses = "";
+  let mobileLinkClasses = "";
+  let isDarkLogo = false;
+  let isScrolledIcon = false;
+  let ctaButtonClasses = "";
 
-  const linkClasses = isScrolled
-    ? "px-2 py-1.5 hover:text-navy-600 transition-colors duration-300 font-sans text-xs font-semibold"
-    : "px-2 py-1.5 hover:text-steel-300 transition-colors duration-300 font-sans text-xs font-semibold";
+  if (navTheme === "transparent") {
+    containerClasses = "w-fit px-6 py-2.5 rounded-full flex items-center gap-6 bg-navy-900/40 backdrop-blur-md text-white border border-white/10 shadow-lg transition-all duration-300";
+    linkClasses = "px-2 py-1.5 hover:text-steel-300 transition-colors duration-300 font-sans text-xs font-semibold";
+    mobileContainerClasses = "bg-navy-900/40 backdrop-blur-md text-white border border-white/10 shadow-lg transition-all duration-300";
+    mobileLinkClasses = "px-1.5 py-1.5 font-bold text-white hover:text-steel-300 transition-colors duration-300";
+    isDarkLogo = false;
+    isScrolledIcon = false;
+    ctaButtonClasses = "bg-white text-navy-900 hover:bg-steel-100";
+  } else if (navTheme === "blue") {
+    containerClasses = "w-fit px-6 py-2.5 rounded-full flex items-center gap-6 bg-navy-500 text-white border border-navy-500 shadow-lg transition-all duration-300";
+    linkClasses = "px-2 py-1.5 hover:text-steel-300 transition-colors duration-300 font-sans text-xs font-semibold";
+    mobileContainerClasses = "bg-navy-500 text-white border border-navy-500 shadow-lg transition-all duration-300";
+    mobileLinkClasses = "px-1.5 py-1.5 font-bold text-white hover:text-steel-300 transition-colors duration-300";
+    isDarkLogo = false;
+    isScrolledIcon = false;
+    ctaButtonClasses = "bg-white text-navy-900 hover:bg-steel-100";
+  } else { // "white"
+    containerClasses = "w-fit px-6 py-2.5 rounded-full flex items-center gap-6 bg-white text-navy-900 border border-steel-200/50 shadow-lg transition-all duration-300";
+    linkClasses = "px-2 py-1.5 hover:text-navy-600 transition-colors duration-300 font-sans text-xs font-semibold";
+    mobileContainerClasses = "bg-white text-navy-500 border border-steel-200/50 shadow-lg transition-all duration-300";
+    mobileLinkClasses = "px-1.5 py-1.5 font-bold text-navy-500 hover:text-navy-800 transition-colors duration-300";
+    isDarkLogo = true;
+    isScrolledIcon = true;
+    ctaButtonClasses = "bg-navy-500 text-white hover:bg-navy-600";
+  }
+
+  const showNav = !isScrollingDown;
+
+  const navPositionClasses = `flex p-4 fixed top-0 left-0 z-40 w-full pointer-events-none ${
+    isMobile ? "justify-start pl-6 md:pl-[80px]" : "justify-center"
+  }`;
 
   return (
     <AnimatePresence>
-      <motion.nav 
-        initial={{ opacity: 0, y: -50, x: "-50%" }}
-        animate={{ opacity: 1, y: 0, x: "-50%" }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="fixed top-6 left-1/2 z-50 flex justify-center pointer-events-none"
-      >
-        <div className={`${containerClasses} pointer-events-auto`}>
-          {/* Davem Logo icon */}
-          <Link to="/" className="flex items-center shrink-0 pr-1 border-r border-slate-200/10">
-            <DavemLogo isDark={isScrolled} />
-          </Link>
-
-          {/* Links */}
-          <div className="flex items-center gap-4">
-            <Link to="/" className={linkClasses}>
-              Home
-            </Link>
-            
-            <a href="#related" className={linkClasses}>
-              Services
-            </a>
-
-            <a href="mailto:info@davemenergy.com" className={linkClasses}>
-              Contact
-            </a>
-          </div>
-
-          {/* Separator & CTA Button */}
-          <div className="flex items-center gap-3 pl-1 border-l border-slate-200/10">
-            <a 
-              href="mailto:info@davemenergy.com"
-              className={`px-4 py-1.5 font-sans text-[10px] font-bold uppercase tracking-wider rounded-full shadow-sm hover:shadow-md transition-all ${
-                isScrolled 
-                  ? "bg-navy-500 text-white hover:bg-navy-600" 
-                  : "bg-white text-navy-900 hover:bg-steel-100"
-              }`}
+      {showNav && (
+        <motion.nav 
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -50 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className={navPositionClasses}
+        >
+          {isMobile ? (
+            /* Morphing Floating Menu for Mobile views */
+            <motion.div 
+              layout
+              transition={{ type: "spring", stiffness: 300, damping: 26 }}
+              className={`${mobileContainerClasses} flex items-center overflow-hidden h-[46px] pointer-events-auto`}
+              style={{
+                borderRadius: "9999px",
+                width: isMenuExpanded ? "230px" : "46px",
+                justifyContent: isMenuExpanded ? "flex-start" : "center"
+              }}
             >
-              Get in Touch
-            </a>
-          </div>
-        </div>
-      </motion.nav>
+              {/* Animated Hamburger/Close button - always on the left */}
+              <motion.button 
+                layout
+                onClick={handleToggle}
+                className="w-[42px] h-[42px] flex items-center justify-center rounded-full hover:bg-slate-200/20 active:scale-95 transition-transform cursor-pointer shrink-0 border-none bg-transparent"
+              >
+                <HamburgerIcon isOpen={isIconOpen} isScrolled={isScrolledIcon} />
+              </motion.button>
+
+              <AnimatePresence>
+                {isMounted && (
+                  /* Navigation Links (fade in and expand to the right) */
+                  <motion.div 
+                    layout
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ 
+                      opacity: isTextVisible ? 1 : 0,
+                      x: isTextVisible ? 0 : -10
+                    }}
+                    exit={{ opacity: 0, x: -10 }}
+                    transition={{ duration: 0.15 }}
+                    className="flex items-center gap-1 pr-3 whitespace-nowrap text-xs font-semibold"
+                  >
+                    <Link className={mobileLinkClasses} onClick={closeMenu} to="/">Home</Link>
+                    <a className={mobileLinkClasses} onClick={closeMenu} href="#related">Services</a>
+                    <a className={mobileLinkClasses} onClick={closeMenu} href="mailto:info@davemenergy.com">Contact</a>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          ) : (
+            /* Standard Desktop Nav Pill */
+            <div className={`${containerClasses} pointer-events-auto`}>
+              {/* Davem Logo icon */}
+              <Link to="/" className="flex items-center shrink-0 pr-1">
+                <DavemLogo isDark={isDarkLogo} />
+              </Link>
+
+              {/* Links */}
+              <div className="flex items-center gap-4">
+                <Link to="/" className={linkClasses}>
+                  Home
+                </Link>
+                
+                <a href="#related" className={linkClasses}>
+                  Services
+                </a>
+
+                <a href="mailto:info@davemenergy.com" className={linkClasses}>
+                  Contact
+                </a>
+              </div>
+
+              {/* CTA Button */}
+              <div className="flex items-center gap-3 pl-1">
+                <a 
+                  href="mailto:info@davemenergy.com"
+                  className={`px-4 py-1.5 font-sans text-[10px] font-bold uppercase tracking-wider rounded-full shadow-sm hover:shadow-md transition-all ${ctaButtonClasses}`}
+                >
+                  Get in Touch
+                </a>
+              </div>
+            </div>
+          )}
+        </motion.nav>
+      )}
     </AnimatePresence>
   );
 }

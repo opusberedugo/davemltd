@@ -5,7 +5,7 @@ export default function ServicesCTA({ service }) {
   if (!service) return null;
 
   return (
-    <section className="relative py-28 bg-navy-950 overflow-hidden text-center text-white w-full">
+    <section id="services-cta" className="relative py-28 bg-navy-950 overflow-hidden text-center text-white w-full">
       {/* Simplified abstract coordinates map background */}
       <svg className="absolute inset-0 w-full h-full opacity-10 pointer-events-none" viewBox="0 0 1000 500" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M 50 0 L 50 500 M 150 0 L 150 500 M 250 0 L 250 500 M 350 0 L 350 500 M 450 0 L 450 500 M 550 0 L 550 500 M 650 0 L 650 500 M 750 0 L 750 500 M 850 0 L 850 500 M 950 0 L 950 500" stroke="white" strokeWidth="0.5" strokeDasharray="5 5" />
