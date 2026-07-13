@@ -114,8 +114,30 @@ export default function About() {
     : "flex flex-col w-full gap-20 md:gap-24";
 
   const slideClass = isSticky 
-    ? "w-full px-6 md:px-12 lg:px-24 h-full overflow-hidden pb-12" 
+    ? "w-full px-6 md:px-12 lg:px-24 h-full overflow-y-auto pb-12 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]" 
     : "w-full px-6 md:px-12 lg:px-24 h-auto pb-0";
+
+  const handleWheel = (e) => {
+    const container = e.currentTarget;
+    const hasOverflow = container.scrollHeight > container.clientHeight;
+    
+    if (!hasOverflow) return;
+
+    const isAtBottom = container.scrollTop + container.clientHeight >= container.scrollHeight - 5;
+    const isAtTop = container.scrollTop <= 5;
+
+    if (e.deltaY > 0) { // Scrolling down
+      if (isAtBottom) {
+        e.preventDefault();
+        window.scrollBy(0, e.deltaY);
+      }
+    } else { // Scrolling up
+      if (isAtTop) {
+        e.preventDefault();
+        window.scrollBy(0, e.deltaY);
+      }
+    }
+  };
 
   return (
     <section ref={targetRef} className={sectionClass}>
@@ -130,6 +152,7 @@ export default function About() {
           {/* SLIDE 1 */}
           <motion.div 
             variants={slideVariants}
+            onWheel={isSticky ? handleWheel : undefined}
             animate={
               !isSticky 
                 ? "active" 
@@ -242,6 +265,7 @@ export default function About() {
           {/* SLIDE 2 */}
           <motion.div 
             variants={slideVariants}
+            onWheel={isSticky ? handleWheel : undefined}
             animate={
               !isSticky 
                 ? "active" 
@@ -302,6 +326,7 @@ export default function About() {
           {/* SLIDE 3 */}
           <motion.div 
             variants={slideVariants}
+            onWheel={isSticky ? handleWheel : undefined}
             animate={
               !isSticky 
                 ? "active" 

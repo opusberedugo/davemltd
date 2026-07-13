@@ -98,7 +98,7 @@ export default function Hero({ onAnimationComplete }) {
   };
 
   return (
-    <section className="relative h-screen w-full font-sans overflow-hidden bg-white">
+    <section className="relative min-h-[640px] md:h-screen w-full font-sans overflow-hidden bg-white">
       {/* Wrapper that dynamically shifts alignment, allowing Framer Motion's 'layout' to interpolate perfectly */}
       <div className={`absolute inset-0 pointer-events-none flex ${
         animationPhase === 'topLeft' 
