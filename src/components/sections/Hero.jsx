@@ -102,7 +102,7 @@ export default function Hero({ onAnimationComplete }) {
       {/* Wrapper that dynamically shifts alignment, allowing Framer Motion's 'layout' to interpolate perfectly */}
       <div className={`absolute inset-0 pointer-events-none flex ${
         animationPhase === 'topLeft' 
-          ? 'items-start justify-start pt-6 pl-6 md:pt-[80px] md:pl-[80px]' 
+          ? 'items-start justify-start pt-28 pl-6 md:pt-[80px] md:pl-[80px]' 
           : 'items-center justify-center'
       }`}>
         <motion.div 
@@ -208,10 +208,10 @@ export default function Hero({ onAnimationComplete }) {
         initial={{ opacity: 0, y: 30 }}
         animate={showText ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="absolute top-[180px] md:top-[300px] left-6 md:left-[80px] w-[calc(100%-3rem)] md:w-full md:max-w-3xl text-left"
+        className="absolute top-[235px] md:top-[300px] left-6 md:left-[80px] w-[calc(100%-3rem)] md:w-full md:max-w-3xl text-left"
       >
         <p className="text-base md:text-lg font-sans leading-relaxed text-balance text-black">
-          Davem Energy Resources Limited delivers cost-effective Engineering, Marine, Procurement, and Logistics Solutions, backed by over 36 years of heritage in oil spill response, soil remediation, and environmental protection.
+          Davem Energy Resources Limited delivers cost-effective Engineering, Marine, Procurement, and Logistics Solutions. Established in 2009, the company brings a rich heritage in oil spill response, soil remediation, and environmental protection.
         </p>
 
         {/* CTA Buttons */}

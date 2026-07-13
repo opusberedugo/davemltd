@@ -114,7 +114,7 @@ export default function About() {
     : "flex flex-col w-full gap-20 md:gap-24";
 
   const slideClass = isSticky 
-    ? "w-full px-6 md:px-12 lg:px-24 h-full overflow-y-auto pb-12 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]" 
+    ? "w-full px-6 md:px-12 lg:px-24 h-full overflow-hidden pb-12" 
     : "w-full px-6 md:px-12 lg:px-24 h-auto pb-0";
 
   return (
@@ -150,34 +150,34 @@ export default function About() {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
                 
                 {/* Left Column: Image */}
-                <motion.div variants={itemVariants} className="lg:col-span-5 flex flex-col h-full justify-center">
-                  <div className="relative w-full aspect-[4/3] sm:aspect-[4/5] lg:aspect-auto lg:h-[380px] xl:h-[460px] rounded-[2rem] overflow-hidden shadow-2xl border border-white/10 bg-navy-800">
+                <motion.div variants={itemVariants} className="lg:col-span-5 flex flex-col">
+                  <div className="relative w-full aspect-[4/3] sm:aspect-[4/5] lg:aspect-auto lg:h-full rounded-[2rem] overflow-hidden shadow-2xl border border-white/10 bg-navy-800 flex-1 flex flex-col">
                     <img
                       src="/about_davem_marine.png"
                       alt="About Davem Energy Marine Logistics"
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover flex-1 min-h-0"
                     />
                     
-                    {/* Floating Badge */}
-                    <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-md rounded-2xl p-4 shadow-2xl border border-slate-200/50 flex items-center gap-3 max-w-[220px] z-10">
-                      <div className="text-3xl font-black text-navy-600 tracking-tight shrink-0 font-display">
-                        36+
-                      </div>
-                      <div className="flex flex-col">
-                        <span className="text-[9px] font-sans font-bold text-navy-600 uppercase tracking-widest leading-none">
-                          Years Of
-                        </span>
-                        <span className="text-slate-800 font-sans font-extrabold text-xs leading-tight mt-1">
-                          Trustworthy Partnerships
-                        </span>
-                      </div>
-                    </div>
+                     {/* Floating Badge */}
+                     <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-md rounded-2xl p-4 shadow-2xl border border-slate-200/50 flex items-center gap-3 max-w-[240px] z-10">
+                       <div className="flex flex-col text-right">
+                         <span className="text-[9px] font-sans font-bold text-navy-600 uppercase tracking-widest leading-none">
+                           Established
+                         </span>
+                         <span className="text-slate-500 font-sans font-semibold text-[10px] leading-none mt-1">
+                           since
+                         </span>
+                       </div>
+                       <div className="text-3xl font-black text-navy-600 tracking-tight shrink-0 font-display border-l border-slate-200/80 pl-3">
+                         2009
+                       </div>
+                     </div>
                   </div>
                 </motion.div>
 
                 {/* Right Column: Content Card */}
-                <motion.div variants={itemVariants} className="lg:col-span-7 flex flex-col justify-center">
-                  <div className="bg-slate-50 text-slate-800 rounded-[2rem] p-5 md:p-6 lg:p-6 xl:p-8 flex flex-col justify-between shadow-2xl border border-slate-200/40 min-h-[380px] xl:min-h-[460px]">
+                <motion.div variants={itemVariants} className="lg:col-span-7 flex flex-col">
+                  <div className="bg-slate-50 text-slate-800 rounded-[2rem] p-5 md:p-6 lg:p-6 xl:p-8 flex flex-col justify-between shadow-2xl border border-slate-200/40 flex-1 lg:min-h-[380px] xl:min-h-[460px]">
                     <div>
                       <span className="text-navy-600 font-sans font-semibold text-xs tracking-widest uppercase mb-1 block">
                         (who we are)
@@ -188,11 +188,15 @@ export default function About() {
                       </h2>
                       
                       <p className="text-slate-600 text-xs mt-2 leading-relaxed font-sans">
-                        Davem Energy Resources Limited (RC 845000) is a premier indigenous Nigerian company delivering cost-effective Engineering, Marine, Procurement, and Logistics Solutions across the West African energy corridor.
+                        Davem Energy Resources Limited (RC 845000) is a multifaceted indigenous company incorporated under the Companies and Allied Matters Act of 1990 to deliver cost-effective Engineering, Marine, Procurement, and Logistics Solutions.
                       </p>
 
                       <p className="text-slate-600 text-xs mt-2 leading-relaxed font-sans">
-                        As former operators of the largest Oil Spill Response organization in West Africa (Clean Nigeria Associates - CNA), we have been at the forefront of environmental stewardship, waste management, and soil remediation.
+                        We have been at the forefront of oil spill control, containment, and clean-up, assisting both Government agencies and private sector organizations in setting up and managing oil pollution response facilities. We were operators of the largest Oil Spill Response organization in Nigeria and the entire West Coast of Africa called Clean Nigeria Associates (CNA) with over 36 years of Experience.
+                      </p>
+
+                      <p className="text-slate-600 text-xs mt-2 leading-relaxed font-sans">
+                        Davem Energy Resources Limited has been active in waste management, soil remediation, EIA., contingency plans, capacity building, manpower development, and training. We pride ourselves in protecting the Nigerian environment.
                       </p>
 
                       <div className="mt-3">
@@ -265,10 +269,10 @@ export default function About() {
                 <motion.div variants={itemVariants} className="h-full flex flex-col">
                   <Card3
                     className="h-full"
-                    title="Continental Leadership"
-                    description="To evolve into a continental leader in our sphere of influence, setting the standard for energy resources, engineering, and logistics across West Africa."
+                    title="Global Engineering Vision"
+                    description="To be a globally respected company offering innovative quality services safely to the Engineering world."
                     imageSrc="https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?q=80&w=600&auto=format&fit=crop"
-                    imageAlt="Continental Leadership"
+                    imageAlt="Global Engineering Vision"
                   />
                 </motion.div>
 
@@ -276,7 +280,7 @@ export default function About() {
                   <Card4
                     className="h-full"
                     title="Environmental Stewardship"
-                    description="Protecting and restoring the Nigerian environment through eco-friendly clean-up methods, soil remediation, and advanced waste management."
+                    description="Protecting and restoring the Nigerian environment through soil remediation, advanced waste management, EIA, and contingency planning."
                     imageSrc="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=600&auto=format&fit=crop"
                     imageAlt="Environmental Stewardship"
                   />
@@ -285,10 +289,10 @@ export default function About() {
                 <motion.div variants={itemVariants} className="h-full flex flex-col">
                   <Card3
                     className="h-full"
-                    title="Value & Quality"
-                    description="Creating sustainable value and delivering high-quality, cost-effective engineering and marine logistics solutions to our upstream and downstream clients."
-                    imageSrc="https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=600&auto=format&fit=crop"
-                    imageAlt="Value & Quality"
+                    title="Value & Capability"
+                    description="Active in capacity building, contingency planning, manpower development, and training to support marine and engineering logistics."
+                    imageSrc="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=600&auto=format&fit=crop"
+                    imageAlt="Value & Capability"
                   />
                 </motion.div>
               </motion.div>
@@ -326,7 +330,7 @@ export default function About() {
                   <Card4
                     className="h-full"
                     title="Our Mission"
-                    description="To support the world by creating value and making a difference through cost-effective solutions, leveraging our 36+ years of industry experience."
+                    description="To support the world by creating value and making a difference through cost-effective solutions."
                     imageSrc="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=600&auto=format&fit=crop"
                     imageAlt="Our Mission"
                   />
@@ -336,7 +340,7 @@ export default function About() {
                   <Card3
                     className="h-full"
                     title="Our Core Values"
-                    description="Quality, Service, Innovation, Professionalism, Integrity, and Collaboration guide everything we do and define our interactions with clients."
+                    description="Quality, Service, Innovation, Professionalism, Integrity, and Collaboration guide everything we do."
                     imageSrc="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=600&auto=format&fit=crop"
                     imageAlt="Our Core Values"
                   />
@@ -346,7 +350,7 @@ export default function About() {
                   <Card4
                     className="h-full"
                     title="Capacity & Training"
-                    description="Empowering organizations with capacity building, contingency planning, manpower development, and certified training in oil spill response."
+                    description="Empowering organizations with capacity building, contingency planning, manpower development, and training."
                     imageSrc="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=600&auto=format&fit=crop"
                     imageAlt="Capacity & Training"
                   />

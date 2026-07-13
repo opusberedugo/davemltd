@@ -14,24 +14,6 @@ export default function ServicesCTA({ service }) {
         <path d="M150,150 Q220,130 300,180 T400,150 T500,200 T420,300 T280,350 Z M600,100 Q700,120 800,80 T900,150 T850,300 T700,350 T620,250 Z M200,380 Q250,420 300,450 T380,410 Z" fill="white" fillOpacity="0.08" />
       </svg>
 
-      {/* Pulsing Map Pins for Operations */}
-      <div className="absolute top-[32%] left-[24%] z-10 flex items-center justify-center">
-        <span className="w-3.5 h-3.5 bg-steel-400/50 rounded-full animate-ping absolute" />
-        <span className="w-2 h-2 bg-steel-300 rounded-full" />
-      </div>
-      <div className="absolute top-[48%] left-[47%] z-10 flex items-center justify-center">
-        <span className="w-5 h-5 bg-steel-400/60 rounded-full animate-ping absolute" />
-        <span className="w-3 h-3 bg-white rounded-full shadow-lg" />
-      </div>
-      <div className="absolute top-[65%] left-[72%] z-10 flex items-center justify-center">
-        <span className="w-3.5 h-3.5 bg-steel-400/50 rounded-full animate-ping absolute" />
-        <span className="w-2 h-2 bg-steel-300 rounded-full" />
-      </div>
-      <div className="absolute top-[38%] left-[84%] z-10 flex items-center justify-center">
-        <span className="w-3.5 h-3.5 bg-steel-400/50 rounded-full animate-ping absolute" />
-        <span className="w-2 h-2 bg-steel-300 rounded-full" />
-      </div>
-
       <div className="max-w-4xl mx-auto px-6 relative z-10">
         <h2 className="text-white font-display font-medium text-2xl md:text-3xl lg:text-4xl leading-relaxed tracking-tight">
           "{service.ctaText}"
@@ -40,7 +22,7 @@ export default function ServicesCTA({ service }) {
         <div className="mt-10 flex justify-center">
           <a
             href="mailto:info@davemenergy.com"
-            className="px-8 py-4 bg-white hover:bg-steel-100 text-navy-950 text-base font-bold rounded-full shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all flex items-center gap-2 cursor-pointer"
+            className="px-8 py-4 bg-white hover:bg-steel-100 text-navy-950 text-base font-bold rounded-full shadow-lg transition-colors duration-300 flex items-center gap-2 cursor-pointer"
           >
             Discuss the Project <ArrowRight size={18} />
           </a>

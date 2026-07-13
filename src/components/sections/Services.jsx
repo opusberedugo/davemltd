@@ -186,7 +186,7 @@ export default function Services() {
             </h2>
             
             <p className="text-slate-700 text-sm mt-6 leading-relaxed font-sans max-w-xl">
-              Guided by over 36 years of industry heritage and an unwavering commitment to environmental safety, Davem Energy Resources Limited delivers specialized, cost-effective solutions across the West African energy corridor.
+              Established in 2009 and guided by a rich industry heritage and an unwavering commitment to environmental safety, Davem Energy Resources Limited delivers specialized, cost-effective solutions across the West African energy corridor.
             </p>
 
             {/* Interactive Vertical Dial Selector for Desktop */}

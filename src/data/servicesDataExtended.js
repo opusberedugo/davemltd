@@ -73,14 +73,16 @@ export const servicesDataExtended = [
     id: "oil-spill-control",
     title: "Oil Spill Control / Clean Up Services",
     shortTitle: "Oil Spill Control",
-    description: "DAVEM possesses extensive capabilities in the cleanup, handling, disposal of hazardous materials, and remediation of contaminated sites. We offer an integrated approach to environmental management, handling all phases from investigation to design and final cleanup. Our spill clean-up services employ eco-friendly methods such as Micronized PolyUrethane (which enables oil recovery and reuse) and Biodegradable Sorbents containing oil-eating microbes that accelerate bioremediation.",
+    description: "DAVEM possesses extensive capabilities and experience in the remediation of sites with contaminated soil or groundwater contamination as well as cleanup, handling, and disposal of hazardous material. We offer an integrated approach to environmental management as well as our ability to handle all project phases from investigation through design to final cleanup.",
     image: "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?q=80&w=1200&auto=format&fit=crop",
     tagline: "Eco-Friendly Oil Containment & Bioremediation",
     specs: [
-      { label: "Response Time", value: "Under 4 Hours (Tier 1 & 2)" },
-      { label: "Sorbents Used", value: "Micronized PolyUrethane / Bio-Microbes" },
-      { label: "Disposal Method", value: "Zero-discharge Bio-piles & Incineration" },
-      { label: "Accreditation", value: "NOSDRA / FMEnv Certified" }
+      { label: "Resource Base", value: "Plant-renewable resource" },
+      { label: "Absorption Capability", value: "Most oil-absorbent natural material" },
+      { label: "Disposal Options", value: "Can be incinerated or land farmed" },
+      { label: "pH Level", value: "Neutral pH" },
+      { label: "Biological Agents", value: "Contains indigenous oil-eating microbes" },
+      { label: "Remediation", value: "Enhances bio-remediation of hydrocarbons" }
     ],
     stats: {
       heading: "Performance data from our rapid-response oil spill operations and containment missions across onshore and inland waters.",
@@ -143,14 +145,16 @@ export const servicesDataExtended = [
     id: "marine-logistics",
     title: "Marine Logistics / Supply Services",
     shortTitle: "Marine Logistics",
-    description: "DAVEM is among the most efficient indigenous companies in Inland Waterway Transportation and Deepwater/Offshore Operations. With a fleet of tugboats, crew boats, utility vessels, service vessels, and barges, we support both downstream and upstream sub-sectors. Our capabilities include offshore equipment supply, vessel chartering for seismic/construction operations, geophysical subsea services, marine logistics transportation, vessel management, and expert marine consultancy.",
+    description: "DAVEM is among the largest and most efficient indigenous companies in Inland Waterway Transportation & Deepwater/Offshore Operations with a fleet of tugboats, Crew boats, Utility vessels, Service vessels, Barges of various specifications, and other marine equipment in operation, providing relevant support service both in the down and upstream sub-sector of the oil and gas industry.",
     image: "/marine_logistics.png",
     tagline: "Vessel Chartering & Deepwater Transport Solutions",
     specs: [
-      { label: "Vessel Fleet", value: "Tugboats, Crew Boats, Barges, Utility" },
-      { label: "Operating Areas", value: "Inland Waterways / Offshore West Africa" },
-      { label: "Services", value: "Logistics, Geophysical Subsea, Support" },
-      { label: "Certification", value: "NIMASA / DPR Class AA Licenses" }
+      { label: "Offshore Activities", value: "Supply of barges and tug boats" },
+      { label: "Vessel Chartering", value: "Platform Supply Vessels, Crew Boats, Dive Offshore Vessels" },
+      { label: "Construction Support", value: "Maintenance Vessels & Seismic Vessels" },
+      { label: "Broker Services", value: "For vessel owners and end-users (consumers)" },
+      { label: "Sub-sea Services", value: "Geophysical activities & sub-sea equipment" },
+      { label: "Logistics & Management", value: "Marine Logistics, Transportation & Vessel Management" }
     ],
     stats: {
       heading: "Operational capacity and safety milestones from our deepwater logistics, supply vessel runs, and barge operations.",
@@ -213,14 +217,16 @@ export const servicesDataExtended = [
     id: "procurement-management",
     title: "Procurement Management Services",
     shortTitle: "Procurement",
-    description: "Procurement in the Oil & Gas Industry is essential for operational success. DAVEM specializes in sourcing and supplying manufactured goods associated with oil and gas exploration, drilling, production, and marine services. Partnering with leading global manufacturers across the UK, Europe, the USA, and the Far East, we deliver high-specification equipment—including valves, pumps, tubular products, ATEX electrical equipment, and safety gear—on time and within budget.",
+    description: "We can procure and ship all equipment and material used in exploration, drilling, marine services, production, and oil products disciplines. Partnering with leading global manufacturers across the UK, Europe, the USA, and the Far East, we deliver high-specification engineering hardware and procurement services on time and within budget.",
     image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1200&auto=format&fit=crop",
     tagline: "Global Supply Chain Sourcing & Technical Supply",
     specs: [
-      { label: "Partnerships", value: "Global OEMs (UK, Europe, USA, Far East)" },
-      { label: "Core Categories", value: "Valves, Pumps, OCTG, ATEX Electricals" },
-      { label: "Sourcing Policy", value: "Rigorous QA/QC & Local Content Compliant" },
-      { label: "Logistics Scope", value: "Ex-Works to DDP (Delivered Duty Paid)" }
+      { label: "Valves & Control", value: "Valve, Actuators, Regulators, Clamps" },
+      { label: "Pumping Solutions", value: "Pumps, Diaphragm pumps, Hoses & Fittings" },
+      { label: "Piping & Tubing", value: "Pipe Fitting, Flanges, Pipe & Tubular Products" },
+      { label: "Filtration & Gauges", value: "Separators, Filters, Gauges, Meters" },
+      { label: "Power & Lifting", value: "Generators, Compressors, Cranes & lifting equipment" },
+      { label: "Remediation Gear", value: "Centrifuge, Verti-G-dryer, Auger, Skips, Pressure Washes" }
     ],
     stats: {
       heading: "Performance indicators showing our supply chain capability, quality metrics, and global OEM network fulfillment.",
@@ -283,14 +289,14 @@ export const servicesDataExtended = [
     id: "spill-equipment",
     title: "Oil Spill Response Equipment and Consumables",
     shortTitle: "Response Equipment",
-    description: "Leveraging strong partnerships with international oil spill equipment manufacturers, Davem Energy supplies and maintains a comprehensive range of response hardware and consumables. Our inventory includes oil spill containment booms, advanced skimmers, decontamination setups, temporary storage Fast Tanks, high-capacity sorbents (pads, pillows), eco-friendly dispersants, communication radios, specialized response vessels, and ancillary pumps and containers.",
+    description: "The sound relationships developed with oil spill equipment manufacturers give Davem Energy Resources Limited access to a large range of products, as well as intimate knowledge of the equipment operations. Davem Energy Resources Limited supplies a comprehensive range of oil spill hardware and response consumables.",
     image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1200&auto=format&fit=crop",
     tagline: "First-Class Oil Recovery Hardware & Consumables",
     specs: [
-      { label: "Boom Types", value: "Shore-Guardian / Offshore Inflated / Fence" },
-      { label: "Skimmers Offered", value: "Weir, Disc, Drum, Brush High-Capacity" },
-      { label: "Chemical Agents", value: "DPR-Approved Eco-Friendly Dispersants" },
-      { label: "Service Scope", value: "Procurement, Training, Annual Recertification" }
+      { label: "Containment & Skimming", value: "Booms, Skimmers, Decontamination equipment" },
+      { label: "Storage & Sorbents", value: "Fast Tank, Sorbents, Absorbent Pads/Pillows" },
+      { label: "Response & Marine", value: "Spill response vessels, Power Packs, Pumps" },
+      { label: "Communication & Tools", value: "Radio setups, Tools, Skids, Liquid containers" }
     ],
     stats: {
       heading: "Performance figures highlighting our hardware footprint, supply capabilities, and active deployment stock in country.",
@@ -353,14 +359,14 @@ export const servicesDataExtended = [
     id: "corrosion-control",
     title: "Corrosion Control and Tank Cleaning Services",
     shortTitle: "Corrosion Control",
-    description: "We provide comprehensive corrosion control and tank cleaning services designed to protect infrastructure and maintain asset integrity. Serving plants (petrochemical, power generation, gas processing), oil and gas facilities (refineries, upgraders), and terminals (tank farms, pipelines, vessels), we deliver advanced coating, blasting, cathodic protection, and storage tank cleaning services that minimize downtime and prevent material degradation.",
+    description: "Corrosion is the gradual destruction of materials by chemical reaction with its environment, typically through electrochemical oxidation of metals in reaction with an oxidant such as oxygen. We offer a wide range of solutions to corrosion problems, serving plants (petrochemical, gas processing, pulp & paper, power generation, water treatment), oil & gas facilities (refineries, oilsands extraction/upgraders), and terminals (tank farms, pipelines & pumping, mining, vessels).",
     image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1200&auto=format&fit=crop",
     tagline: "Industrial Blasting, Coatings & Cathodic Protection",
     specs: [
-      { label: "Blasting Methods", value: "Wet Abrasive / Dry Grid / Hydro-blasting" },
-      { label: "Tank Clean Scope", value: "Crude Storage, Sludge Evacuation, Gas-Freeing" },
-      { label: "Standards", value: "NACE / ISO 8501-1 / SSPC Compliant" },
-      { label: "Cathodic Methods", value: "Sacrificial Anodes / Impressed Current (ICCP)" }
+      { label: "Industrial Plants", value: "Petrochemical, Gas Processing, Pulp & Paper, Power, Water" },
+      { label: "Oil & Gas Operations", value: "Refineries, Oilsands Extraction, Upgraders, In-situ" },
+      { label: "Terminals & Assets", value: "Tank farms, Pipeline & Pumping, Mining, Vessels" },
+      { label: "Standards & Methods", value: "Blasting, Coatings, Cathodic Protection (ICCP)" }
     ],
     stats: {
       heading: "Engineering milestones tracking our industrial tank cleanouts, surface treatment projects, and cathodic protection networks.",
@@ -423,14 +429,16 @@ export const servicesDataExtended = [
     id: "construction-engineering",
     title: "Construction Engineering Services",
     shortTitle: "Construction Eng.",
-    description: "We deliver a comprehensive range of multi-discipline construction and engineering services tailored for heavy industrial projects. Our team manages structural fabrications, civil construction, facility maintenance, and pipeline engineering, ensuring all projects are executed to the highest standards of safety, quality, and structural durability in line with oil and gas industry requirements.",
+    description: "We deliver a comprehensive range of multi-discipline engineering services for a variety of heavy industrial projects, ensuring all projects are executed to the highest standards of safety, quality, and structural durability.",
     image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200&auto=format&fit=crop",
     tagline: "Multi-Discipline Engineering & Structural Fabrication",
     specs: [
-      { label: "Engineering Scope", value: "FEED / Detailed Engineering Design" },
-      { label: "Fabrication Capacity", value: "500+ Tons Structural Steel / Year" },
-      { label: "Civil works", value: "Heavy Foundations, Bunds, Retaining Walls" },
-      { label: "Codes Complied", value: "ASME, API, BS EN, AWS Standards" }
+      { label: "Field Works", value: "Greenfield & Brownfield Works" },
+      { label: "Construction Style", value: "Modular Construction" },
+      { label: "Process & Instrumentation", value: "Process and Instrumentation Design" },
+      { label: "HSE Services", value: "Health, Safety & Environment Services" },
+      { label: "Infrastructure", value: "Pipelines Construction and Installation" },
+      { label: "Building & Civil", value: "Civil Construction & Building Construction" }
     ],
     stats: {
       heading: "Project execution metrics demonstrating our fabrication accuracy, civil structural strength, and zero-incident engineering records.",

@@ -121,15 +121,18 @@ export default function Navpill({ isVisible = true }) {
     // Hide-on-scroll logic
     // Hide when scrolling down, show when scrolling up
     const currentScrollY = latest;
-    if (currentScrollY > lastScrollY.current && currentScrollY > 120) {
-      setIsScrollingDown(true);
-      if (isMenuExpanded) {
-        closeMenu(); // Auto-collapse mobile menu on scroll down
+    const diff = currentScrollY - lastScrollY.current;
+    if (Math.abs(diff) > 5) {
+      if (diff > 0 && currentScrollY > 120) {
+        setIsScrollingDown(true);
+        if (isMenuExpanded) {
+          closeMenu(); // Auto-collapse mobile menu on scroll down
+        }
+      } else if (diff < 0) {
+        setIsScrollingDown(false);
       }
-    } else if (currentScrollY < lastScrollY.current) {
-      setIsScrollingDown(false);
+      lastScrollY.current = currentScrollY;
     }
-    lastScrollY.current = currentScrollY;
   });
 
   useEffect(() => {
@@ -194,7 +197,7 @@ export default function Navpill({ isVisible = true }) {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -50 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className={`flex p-4 sticky top-0 z-40 w-full pointer-events-none ${isMobile ? "justify-start pl-6 md:pl-[80px]" : "justify-around"
+          className={`flex p-4 fixed top-0 left-0 z-40 w-full pointer-events-none ${isMobile ? "justify-start pl-6 md:pl-[80px]" : "justify-around"
             }`}
         >
           {isMobile ? (
@@ -205,7 +208,7 @@ export default function Navpill({ isVisible = true }) {
               className={`${mobileContainerClasses} flex items-center overflow-hidden h-[46px] pointer-events-auto`}
               style={{
                 borderRadius: "9999px",
-                width: isMenuExpanded ? "230px" : "46px",
+                width: isMenuExpanded ? "240px" : "46px",
                 justifyContent: isMenuExpanded ? "flex-start" : "center"
               }}
             >

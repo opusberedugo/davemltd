@@ -181,24 +181,24 @@ export default function ServicesNavPill() {
   let ctaButtonClasses = "";
 
   if (navTheme === "transparent") {
-    containerClasses = "w-fit px-6 py-2.5 rounded-full flex items-center gap-6 bg-navy-900/40 backdrop-blur-md text-white border border-white/10 shadow-lg transition-all duration-300";
-    linkClasses = "px-2 py-1.5 hover:text-steel-300 transition-colors duration-300 font-sans text-xs font-semibold";
+    containerClasses = "w-fit px-4 py-2 rounded-full flex items-center gap-4 bg-navy-900/40 backdrop-blur-md text-white border-white/10 border-2 shadow-lg transition-all duration-300 font-medium";
+    linkClasses = "px-4 py-2 hover:text-steel-300 transition-all duration-300";
     mobileContainerClasses = "bg-navy-900/40 backdrop-blur-md text-white border border-white/10 shadow-lg transition-all duration-300";
     mobileLinkClasses = "px-1.5 py-1.5 font-bold text-white hover:text-steel-300 transition-colors duration-300";
     isDarkLogo = false;
     isScrolledIcon = false;
     ctaButtonClasses = "bg-white text-navy-900 hover:bg-steel-100";
   } else if (navTheme === "blue") {
-    containerClasses = "w-fit px-6 py-2.5 rounded-full flex items-center gap-6 bg-navy-500 text-white border border-navy-500 shadow-lg transition-all duration-300";
-    linkClasses = "px-2 py-1.5 hover:text-steel-300 transition-colors duration-300 font-sans text-xs font-semibold";
+    containerClasses = "w-fit px-4 py-2 rounded-full flex items-center gap-4 bg-navy-500 text-white border border-navy-500 border-2 shadow-lg transition-all duration-300 font-medium";
+    linkClasses = "px-4 py-2 hover:text-steel-300 transition-all duration-300";
     mobileContainerClasses = "bg-navy-500 text-white border border-navy-500 shadow-lg transition-all duration-300";
     mobileLinkClasses = "px-1.5 py-1.5 font-bold text-white hover:text-steel-300 transition-colors duration-300";
     isDarkLogo = false;
     isScrolledIcon = false;
     ctaButtonClasses = "bg-white text-navy-900 hover:bg-steel-100";
   } else { // "white"
-    containerClasses = "w-fit px-6 py-2.5 rounded-full flex items-center gap-6 bg-white text-navy-900 border border-steel-200/50 shadow-lg transition-all duration-300";
-    linkClasses = "px-2 py-1.5 hover:text-navy-600 transition-colors duration-300 font-sans text-xs font-semibold";
+    containerClasses = "w-fit px-4 py-2 rounded-full flex items-center gap-4 bg-white text-navy-900 border border-steel-200/50 border-2 shadow-lg transition-all duration-300 font-medium";
+    linkClasses = "px-4 py-2 hover:text-navy-600 transition-all duration-300";
     mobileContainerClasses = "bg-white text-navy-500 border border-steel-200/50 shadow-lg transition-all duration-300";
     mobileLinkClasses = "px-1.5 py-1.5 font-bold text-navy-500 hover:text-navy-800 transition-colors duration-300";
     isDarkLogo = true;
@@ -273,7 +273,7 @@ export default function ServicesNavPill() {
               </Link>
 
               {/* Links */}
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-0">
                 <Link to="/" className={linkClasses}>
                   Home
                 </Link>
@@ -291,7 +291,7 @@ export default function ServicesNavPill() {
               <div className="flex items-center gap-3 pl-1">
                 <a 
                   href="mailto:info@davemenergy.com"
-                  className={`px-4 py-1.5 font-sans text-[10px] font-bold uppercase tracking-wider rounded-full shadow-sm hover:shadow-md transition-all ${ctaButtonClasses}`}
+                  className={`px-4 py-2 font-sans text-xs font-bold uppercase tracking-wider rounded-full shadow-sm hover:shadow-md transition-all ${ctaButtonClasses}`}
                 >
                   Get in Touch
                 </a>
