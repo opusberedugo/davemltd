@@ -125,18 +125,18 @@ export default function ServicesNavPill() {
     return () => window.removeEventListener("resize", handleInitialTheme);
   }, []);
 
-  // Sequential closing flow: Hide text -> shrink container -> morph icon back
+  // Sequential closing flow: Hide text -> unmount & shrink container -> morph icon back
   const closeMenu = () => {
     setIsTextVisible(false);
     
     setTimeout(() => {
+      setIsMounted(false);
       setIsMenuExpanded(false);
       
       setTimeout(() => {
         setIsIconOpen(false);
-        setIsMounted(false);
-      }, 350); // wait for width spring animation to complete
-    }, 150); // wait for opacity fade transition to complete
+      }, 300);
+    }, 100);
   };
 
   // Opening flow: morph icon, expand container, mount and reveal text
@@ -230,7 +230,7 @@ export default function ServicesNavPill() {
               className={`${mobileContainerClasses} flex items-center overflow-hidden h-[46px] pointer-events-auto`}
               style={{
                 borderRadius: "9999px",
-                width: isMenuExpanded ? "230px" : "46px",
+                width: isMenuExpanded ? "min(310px, calc(100vw - 6px))" : "46px",
                 justifyContent: isMenuExpanded ? "flex-start" : "center"
               }}
             >
@@ -258,8 +258,8 @@ export default function ServicesNavPill() {
                     className="flex items-center gap-1 pr-3 whitespace-nowrap text-xs font-semibold"
                   >
                     <Link className={mobileLinkClasses} onClick={closeMenu} to="/">Home</Link>
-                    <a className={mobileLinkClasses} onClick={closeMenu} href="#related">Services</a>
-                    <a className={mobileLinkClasses} onClick={closeMenu} href="mailto:info@davemenergy.com">Contact</a>
+                    <a className={mobileLinkClasses} onClick={closeMenu} href="#process">Process</a>
+                    <a className={mobileLinkClasses} onClick={closeMenu} href="#outputs">Deliverables</a>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -278,12 +278,12 @@ export default function ServicesNavPill() {
                   Home
                 </Link>
                 
-                <a href="#related" className={linkClasses}>
-                  Services
+                <a href="#process" className={linkClasses}>
+                  Process
                 </a>
 
-                <a href="mailto:info@davemenergy.com" className={linkClasses}>
-                  Contact
+                <a href="#outputs" className={linkClasses}>
+                  Deliverables
                 </a>
               </div>
 

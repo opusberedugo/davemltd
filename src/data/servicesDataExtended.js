@@ -1,10 +1,18 @@
+import soilRemediationHero from "../assets/services/soil_remediation_hero.png";
+import soilRemediationStats from "../assets/services/soil_remediation_stats.png";
+import oilSpillHero from "../assets/services/oil_spill_hero.png";
+import oilSpillStats from "../assets/services/oil_spill_stats.png";
+import marineLogisticsHero from "../assets/services/marine_logistics_hero.png";
+import marineLogisticsStats from "../assets/services/marine_logistics_stats.png";
+import procurementHero from "../assets/services/procurement_hero.png";
+
 export const servicesDataExtended = [
   {
     id: "soil-remediation",
     title: "Soil Remediation Services",
     shortTitle: "Soil Remediation",
     description: "Davem Energy Resources Limited provides complete turn-key solutions for the management of contaminated soil. Contaminated soils are encountered on many sites as a result of uncontrolled discharges, spillages, or historical activities. Our comprehensive services include site characterization (trial pits, boreholes, analytical services), risk assessment & management, site delineation, excavation, and treatment of contaminated soil or groundwater, along with expert consultancy and training.",
-    image: "https://images.unsplash.com/photo-1530587191325-3db32d826c18?q=80&w=1200&auto=format&fit=crop",
+    image: soilRemediationHero,
     tagline: "Restoring Soil Health & Compliance at Scale",
     specs: [
       { label: "Technology", value: "Bioremediation / Ex-situ / In-situ" },
@@ -14,7 +22,7 @@ export const servicesDataExtended = [
     ],
     stats: {
       heading: "Verified environmental remediation metrics drawn from our active clean-up projects across Nigeria.",
-      image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=600&auto=format&fit=crop",
+      image: soilRemediationStats,
       metrics: [
         { label: "Total Contaminated Soil Remediated", value: "120,000+ Tons" },
         { label: "Average Bioremediation Success Rate", value: "98.7%", highlight: true },
@@ -74,7 +82,7 @@ export const servicesDataExtended = [
     title: "Oil Spill Control / Clean Up Services",
     shortTitle: "Oil Spill Control",
     description: "DAVEM possesses extensive capabilities and experience in the remediation of sites with contaminated soil or groundwater contamination as well as cleanup, handling, and disposal of hazardous material. We offer an integrated approach to environmental management as well as our ability to handle all project phases from investigation through design to final cleanup.",
-    image: "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?q=80&w=1200&auto=format&fit=crop",
+    image: oilSpillHero,
     tagline: "Eco-Friendly Oil Containment & Bioremediation",
     specs: [
       { label: "Resource Base", value: "Plant-renewable resource" },
@@ -86,7 +94,7 @@ export const servicesDataExtended = [
     ],
     stats: {
       heading: "Performance data from our rapid-response oil spill operations and containment missions across onshore and inland waters.",
-      image: "https://images.unsplash.com/photo-1597813793492-c5b98cf3a38e?q=80&w=600&auto=format&fit=crop",
+      image: oilSpillStats,
       metrics: [
         { label: "Total Rapid Response Callouts", value: "450+ Incidents" },
         { label: "Average Oil Recovery Rate", value: "99.2%", highlight: true },
@@ -99,25 +107,25 @@ export const servicesDataExtended = [
         title: "JIV Mobilization & Spill Containment",
         description: "Deploying rapid response team for Joint Investigation Visit (JIV) and deploying oil containment booms to stop further migration on soil or waterways.",
         badges: ["JIV Investigation", "Boom Deployment", "Spill Isolation", "Safety Auditing"],
-        image: "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?q=80&w=600&auto=format&fit=crop"
+        image: oilSpillHero
       },
       {
         title: "Mechanical Recovery & Skimming",
         description: "Deploying brush, disc, or weir skimmers to actively recover floating oil from waters, transferring it into temporary Fast Tank storage.",
         badges: ["Skimmer Operation", "Fast Tank Storage", "Offshore Recovery", "Oil-Water Separation"],
-        image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=600&w=600&auto=format&fit=crop"
+        image: oilSpillStats
       },
       {
         title: "Bio-Sorbent Restoration",
         description: "Applying Micronized PolyUrethane and organic sorbents loaded with hydrocarbon-consuming microbes to naturally break down residual thin films.",
         badges: ["Microbial Bioremediation", "Micronized PolyUrethane", "Sorbent Absorption", "Zero Residual Protection"],
-        image: "https://images.unsplash.com/photo-1597813793492-c5b98cf3a38e?q=600&w=600&auto=format&fit=crop"
+        image: oilSpillStats
       },
       {
         title: "Waste Handling & Site Clearance",
         description: "Transferring recovered hydrocarbons and debris to approved handling facilities, followed by core ground checks for NOSDRA certification.",
         badges: ["Waste Manifest", "NOSDRA Audit", "Site Restoration Certificate", "Hydrocarbon Recovery"],
-        image: "https://images.unsplash.com/photo-1530587191325-3db32d826c18?q=600&w=600&auto=format&fit=crop"
+        image: soilRemediationHero
       }
     ],
     outputs: [
@@ -146,7 +154,7 @@ export const servicesDataExtended = [
     title: "Marine Logistics / Supply Services",
     shortTitle: "Marine Logistics",
     description: "DAVEM is among the largest and most efficient indigenous companies in Inland Waterway Transportation & Deepwater/Offshore Operations with a fleet of tugboats, Crew boats, Utility vessels, Service vessels, Barges of various specifications, and other marine equipment in operation, providing relevant support service both in the down and upstream sub-sector of the oil and gas industry.",
-    image: "/marine_logistics.png",
+    image: marineLogisticsHero,
     tagline: "Vessel Chartering & Deepwater Transport Solutions",
     specs: [
       { label: "Offshore Activities", value: "Supply of barges and tug boats" },
@@ -158,7 +166,7 @@ export const servicesDataExtended = [
     ],
     stats: {
       heading: "Operational capacity and safety milestones from our deepwater logistics, supply vessel runs, and barge operations.",
-      image: "https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=600&auto=format&fit=crop",
+      image: marineLogisticsStats,
       metrics: [
         { label: "Total Fleet Capacity Managed", value: "35,000+ DWT" },
         { label: "On-Time Supply Delivery Rate", value: "98.9%", highlight: true },
@@ -171,25 +179,25 @@ export const servicesDataExtended = [
         title: "Vessel Selection & Compliance Audit",
         description: "Sourcing and vetting vessels matching specific load scopes, verifying Class safety indexes, NIMASA certifications, and crew readiness.",
         badges: ["Vessel Vetting", "NIMASA Compliance", "Safety Auditing", "Load Profiling"],
-        image: "https://images.unsplash.com/photo-1544816155-12df9643f363?q=600&w=600&auto=format&fit=crop"
+        image: marineLogisticsHero
       },
       {
         title: "Route Planning & Transit Clearance",
         description: "Formulating safe passage plans across inland waterways or deepwater sectors, securing maritime clearances and security escorts.",
         badges: ["Passage Planning", "Navigational Safety", "Security Coordination", "Port Clearances"],
-        image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=600&w=600&auto=format&fit=crop"
+        image: marineLogisticsStats
       },
       {
         title: "Loading & Marine Transport Execution",
         description: "Supervising safe cargo loading, offshore transfers (STS), or transport operations under strict maritime risk protocols.",
         badges: ["STS Supervision", "Cargo Manifest", "Voyage Execution", "Dynamic Positioning Support"],
-        image: "/marine_logistics.png"
+        image: marineLogisticsHero
       },
       {
         title: "Handover & Logistics Documentation",
         description: "Finalizing port deliveries, managing discharge operations, and delivering certified log entries and discharge receipts.",
         badges: ["Discharge Supervision", "Log Waybills", "Safe Handover Documentation", "Charter Closeout"],
-        image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=600&w=600&auto=format&fit=crop"
+        image: marineLogisticsStats
       }
     ],
     outputs: [
@@ -218,7 +226,7 @@ export const servicesDataExtended = [
     title: "Procurement Management Services",
     shortTitle: "Procurement",
     description: "We can procure and ship all equipment and material used in exploration, drilling, marine services, production, and oil products disciplines. Partnering with leading global manufacturers across the UK, Europe, the USA, and the Far East, we deliver high-specification engineering hardware and procurement services on time and within budget.",
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1200&auto=format&fit=crop",
+    image: procurementHero,
     tagline: "Global Supply Chain Sourcing & Technical Supply",
     specs: [
       { label: "Valves & Control", value: "Valve, Actuators, Regulators, Clamps" },
@@ -230,7 +238,7 @@ export const servicesDataExtended = [
     ],
     stats: {
       heading: "Performance indicators showing our supply chain capability, quality metrics, and global OEM network fulfillment.",
-      image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=600&auto=format&fit=crop",
+      image: procurementHero,
       metrics: [
         { label: "Registered Global OEM Partners", value: "45+ Manufacturers" },
         { label: "QA/QC Specification Accuracy", value: "100%", highlight: true },
@@ -243,25 +251,25 @@ export const servicesDataExtended = [
         title: "Requirement Clarification & RFP Sourcing",
         description: "Reviewing engineering bills of materials, detailing design tolerances, and compiling RFPs to transmit to accredited OEMs.",
         badges: ["Technical Sizing", "OEM Vetting", "RFP Compilation", "Data Sheets Vetting"],
-        image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=600&w=600&auto=format&fit=crop"
+        image: procurementHero
       },
       {
         title: "QA/QC Material Inspection & Verification",
         description: "Coordinating factory inspections (SGS/BV) to verify material mill test certificates (MTC) and dimensional conformity before crating.",
         badges: ["Third-Party Inspection", "Mill Certificate Audit", "Conformance Checks", "Safe Packaging Audits"],
-        image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=600&w=600&auto=format&fit=crop"
+        image: procurementHero
       },
       {
         title: "International Freight & Customs Clearance",
         description: "Managing air or ocean freight, preparing customs declarations, and coordinating SONCAP approvals for smooth port entries.",
         badges: ["SONCAP Audits", "Customs Declarations", "Freight Tracking", "Port Log Clearance"],
-        image: "https://images.unsplash.com/photo-1544816155-12df9643f363?q=600&w=600&auto=format&fit=crop"
+        image: marineLogisticsStats
       },
       {
         title: "Warehouse Inspection & On-site Handover",
         description: "Performing final site arrival inspections, structural checks, and providing complete technical databooks to project operators.",
         badges: ["Arrival Check", "Technical Databooks", "Safe On-site Handover", "OEM Warranties Registry"],
-        image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=600&w=600&auto=format&fit=crop"
+        image: procurementHero
       }
     ],
     outputs: [
@@ -290,7 +298,7 @@ export const servicesDataExtended = [
     title: "Oil Spill Response Equipment and Consumables",
     shortTitle: "Response Equipment",
     description: "The sound relationships developed with oil spill equipment manufacturers give Davem Energy Resources Limited access to a large range of products, as well as intimate knowledge of the equipment operations. Davem Energy Resources Limited supplies a comprehensive range of oil spill hardware and response consumables.",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1200&auto=format&fit=crop",
+    image: oilSpillStats,
     tagline: "First-Class Oil Recovery Hardware & Consumables",
     specs: [
       { label: "Containment & Skimming", value: "Booms, Skimmers, Decontamination equipment" },
@@ -300,7 +308,7 @@ export const servicesDataExtended = [
     ],
     stats: {
       heading: "Performance figures highlighting our hardware footprint, supply capabilities, and active deployment stock in country.",
-      image: "https://images.unsplash.com/photo-1605787020600-b9ebd5df1d07?q=80&w=600&auto=format&fit=crop",
+      image: oilSpillHero,
       metrics: [
         { label: "Containment Booms Sourced & Maintained", value: "14,500+ Meters" },
         { label: "DPR / EGASPIN Approvals", value: "100%", highlight: true },
@@ -313,25 +321,25 @@ export const servicesDataExtended = [
         title: "Spill Risk & Equipment Scoping",
         description: "Assessing operational risk indexes of terminals or offshore blocks, proposing exact inventory counts of booms and skimmers.",
         badges: ["Risk Assessment", "Sizing Studies", "Inventory Planning", "API Standards Vetting"],
-        image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=600&w=600&auto=format&fit=crop"
+        image: oilSpillStats
       },
       {
         title: "OEM Manufacturing & Certification",
         description: "Procuring directly from leading global manufacturers, verifying load tolerances, recovery capacities, and toxicity ratings.",
         badges: ["Direct Procurement", "Efficacy Auditing", "Manufacturer Testing", "Certification Management"],
-        image: "https://images.unsplash.com/photo-1605787020600-b9ebd5df1d07?q=600&w=600&auto=format&fit=crop"
+        image: oilSpillHero
       },
       {
         title: "Deployment Training & Commissioning",
         description: "Running interactive deployment drills for client operators, validating skimmer recovery rates, boom inflation, and pump setup.",
         badges: ["Operator Drills", "IMO Standards", "Skimmer Tuning", "Emergency Response Setup"],
-        image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=600&w=600&auto=format&fit=crop"
+        image: oilSpillStats
       },
       {
         title: "Annual Recertification & Support",
         description: "Providing routine mechanical maintenance, checkups, and annual recertification of critical containment items.",
         badges: ["Recertification Logs", "Maintenance Inspections", "Spare Parts Procurement", "Emergency Stocks Management"],
-        image: "https://images.unsplash.com/photo-1530587191325-3db32d826c18?q=600&w=600&auto=format&fit=crop"
+        image: oilSpillHero
       }
     ],
     outputs: [
@@ -360,7 +368,7 @@ export const servicesDataExtended = [
     title: "Corrosion Control and Tank Cleaning Services",
     shortTitle: "Corrosion Control",
     description: "Corrosion is the gradual destruction of materials by chemical reaction with its environment, typically through electrochemical oxidation of metals in reaction with an oxidant such as oxygen. We offer a wide range of solutions to corrosion problems, serving plants (petrochemical, gas processing, pulp & paper, power generation, water treatment), oil & gas facilities (refineries, oilsands extraction/upgraders), and terminals (tank farms, pipelines & pumping, mining, vessels).",
-    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1200&auto=format&fit=crop",
+    image: soilRemediationHero,
     tagline: "Industrial Blasting, Coatings & Cathodic Protection",
     specs: [
       { label: "Industrial Plants", value: "Petrochemical, Gas Processing, Pulp & Paper, Power, Water" },
@@ -370,7 +378,7 @@ export const servicesDataExtended = [
     ],
     stats: {
       heading: "Engineering milestones tracking our industrial tank cleanouts, surface treatment projects, and cathodic protection networks.",
-      image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=600&auto=format&fit=crop",
+      image: procurementHero,
       metrics: [
         { label: "Total Surface Area Protected", value: "240,000+ sqm" },
         { label: "Average Tank De-sludging Speed", value: "15% Faster", highlight: true },

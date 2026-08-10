@@ -10,7 +10,7 @@ export default function ServicesProcess({ service, activeStep: externalActiveSte
   if (!service || !service.process) return null;
 
   return (
-    <section className="py-24 px-6 md:px-12 lg:px-24 bg-white border-t border-slate-200/40">
+    <section id="process" className="py-24 px-6 md:px-12 lg:px-24 bg-white border-t border-slate-200/40">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col items-start text-left mb-12">
           <span className="text-steel-600 font-sans font-bold text-xs uppercase tracking-widest mb-2">

@@ -79,18 +79,18 @@ export default function Navpill({ isVisible = true }) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Sequential closing flow: Hide text -> shrink container -> morph icon back
+  // Sequential closing flow: Hide text -> unmount & shrink container -> morph icon back
   const closeMenu = () => {
     setIsTextVisible(false);
 
     setTimeout(() => {
+      setIsMounted(false);
       setIsMenuExpanded(false);
 
       setTimeout(() => {
         setIsIconOpen(false);
-        setIsMounted(false);
-      }, 350); // wait for width spring animation to complete
-    }, 150); // wait for opacity fade transition to complete
+      }, 300);
+    }, 100);
   };
 
   // Opening flow: morph icon, expand container, mount and reveal text
@@ -184,8 +184,8 @@ export default function Navpill({ isVisible = true }) {
     : "border-navy-500 border-2 bg-navy-500 text-white shadow-lg transition-all duration-300";
 
   const mobileLinkClasses = isScrolled
-    ? "px-2 py-1.5 font-bold text-navy-500 hover:text-navy-800 transition-colors duration-300"
-    : "px-2 py-1.5 font-bold text-white hover:text-steel-300 transition-colors duration-300";
+    ? "px-1.5 sm:px-2 py-1.5 font-bold text-navy-500 hover:text-navy-800 transition-colors duration-300"
+    : "px-1.5 sm:px-2 py-1.5 font-bold text-white hover:text-steel-300 transition-colors duration-300";
 
   const showNav = isVisible && !hideForTabs && !isScrollingDown;
 
@@ -197,7 +197,7 @@ export default function Navpill({ isVisible = true }) {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -50 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className={`flex p-4 fixed top-0 left-0 z-40 w-full pointer-events-none ${isMobile ? "justify-start pl-6 md:pl-[80px]" : "justify-around"
+          className={`flex p-3 sm:p-4 fixed top-0 left-0 z-40 w-full pointer-events-none ${isMobile ? "justify-start pl-4 sm:pl-6 md:pl-[80px]" : "justify-around"
             }`}
         >
           {isMobile ? (
@@ -208,7 +208,7 @@ export default function Navpill({ isVisible = true }) {
               className={`${mobileContainerClasses} flex items-center overflow-hidden h-[46px] pointer-events-auto`}
               style={{
                 borderRadius: "9999px",
-                width: isMenuExpanded ? "240px" : "46px",
+                width: isMenuExpanded ? "min(310px, calc(100vw - 6px))" : "46px",
                 justifyContent: isMenuExpanded ? "flex-start" : "center"
               }}
             >
@@ -232,8 +232,8 @@ export default function Navpill({ isVisible = true }) {
                       x: isTextVisible ? 0 : -10
                     }}
                     exit={{ opacity: 0, x: -10 }}
-                    transition={{ duration: 0.15 }}
-                    className="flex items-center gap-1 pr-3 whitespace-nowrap text-xs font-semibold"
+                    transition={{ duration: 0.1 }}
+                    className="flex items-center gap-0.5 sm:gap-1 pr-2 sm:pr-3 whitespace-nowrap text-[11px] sm:text-xs font-semibold"
                   >
                     <a className={mobileLinkClasses} onClick={closeMenu} href="#">About</a>
                     <a className={mobileLinkClasses} onClick={closeMenu} href="#">Services</a>
