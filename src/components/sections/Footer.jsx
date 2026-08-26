@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { Mail, Globe, MapPin, Phone } from "lucide-react";
 import { DavemLogo } from "../navigation/ServicesNavPill";
 
-export default function Footer() {
+export default function Footer({ showTopBorder = true }) {
   return (
-    <footer className="bg-navy-950 text-white border-t border-white/5 py-16 px-6 md:px-12 lg:px-24 text-left w-full">
+    <footer id="contact" className={`bg-navy-950 text-white ${showTopBorder ? "border-t border-white/5" : ""} py-16 px-6 md:px-12 lg:px-24 text-left w-full`}>
       <div className="max-w-7xl mx-auto">
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-16">
@@ -30,10 +30,10 @@ export default function Footer() {
           {/* Col 3: Company links */}
           <div className="lg:col-span-2 flex flex-col space-y-3">
             <h4 className="font-sans font-bold text-xs uppercase tracking-wider text-slate-300 mb-2">Company</h4>
-            <a href="#" className="text-slate-400 hover:text-white text-xs md:text-sm transition-colors">About Us</a>
-            <a href="#" className="text-slate-400 hover:text-white text-xs md:text-sm transition-colors">Capabilities</a>
-            <a href="#" className="text-slate-400 hover:text-white text-xs md:text-sm transition-colors">Careers</a>
-            <a href="#" className="text-slate-400 hover:text-white text-xs md:text-sm transition-colors">Contact</a>
+            <a href="#about" className="text-slate-400 hover:text-white text-xs md:text-sm transition-colors">About Us</a>
+            <a href="#services" className="text-slate-400 hover:text-white text-xs md:text-sm transition-colors">Capabilities</a>
+            <a href="#services" className="text-slate-400 hover:text-white text-xs md:text-sm transition-colors">Careers</a>
+            <a href="#contact" className="text-slate-400 hover:text-white text-xs md:text-sm transition-colors">Contact</a>
           </div>
 
           {/* Col 4: Contact details */}

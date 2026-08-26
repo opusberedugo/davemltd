@@ -3,6 +3,7 @@ import Hero from '../sections/Hero';
 import Navpill from '../navigation/NavPill';
 import About from '../sections/About';
 import Services from '../sections/Services';
+import Contact from '../sections/Contact';
 import Footer from '../sections/Footer';
 
 export default function Landing() {
@@ -18,6 +19,7 @@ export default function Landing() {
       <Hero onAnimationComplete={handleAnimationComplete} />
       <About />
       <Services />
+      <Contact />
       <Footer />
     </>
   );  

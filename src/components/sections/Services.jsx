@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Grid from "../layout/Grid";
 
-const servicesData = [
+const servicesData = [  
   {
     id: "soil-remediation",
     title: "Soil Remediation Services",
@@ -171,7 +171,7 @@ export default function Services() {
   };
 
   return (
-    <section className="bg-steel-100 py-20 px-8 md:px-16 lg:px-24"> 
+    <section id="services" className="bg-steel-100 py-20 px-6 sm:px-8 md:px-16 lg:px-24"> 
       <div className="max-w-7xl mx-auto">
         <Grid className="grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
@@ -294,16 +294,16 @@ export default function Services() {
                   </p>
 
                   {/* Actions */}
-                  <div className="flex flex-row flex-nowrap items-center gap-3 mt-8 whitespace-nowrap overflow-x-visible">
+                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mt-8 whitespace-normal sm:whitespace-nowrap overflow-x-visible w-full sm:w-auto">
                     <Link 
                       to={`/services/${service.id}`}
-                      className="px-5 py-3 bg-navy-500 text-white font-sans text-sm font-semibold rounded-full hover:bg-navy-600 transition-all duration-300 shadow-sm cursor-pointer hover:shadow-md active:scale-95 flex items-center justify-center text-decoration-none"
+                      className="w-full sm:w-auto px-5 py-3 bg-navy-500 text-white font-sans text-sm font-semibold rounded-full hover:bg-navy-600 transition-all duration-300 shadow-sm cursor-pointer hover:shadow-md active:scale-95 flex items-center justify-center text-decoration-none text-center"
                     >
                       View Details
                     </Link>
                     <button 
                       onClick={() => window.location.href = `mailto:info@davemenergy.com?subject=Appointment Booking - ${service.title}`}
-                      className="px-5 py-3 border border-steel-400 text-steel-700 bg-transparent font-sans text-sm font-semibold rounded-full hover:bg-steel-200 hover:text-navy-700 transition-all duration-300 shadow-sm cursor-pointer active:scale-95"
+                      className="w-full sm:w-auto px-5 py-3 border border-steel-400 text-steel-700 bg-transparent font-sans text-sm font-semibold rounded-full hover:bg-steel-200 hover:text-navy-700 transition-all duration-300 shadow-sm cursor-pointer active:scale-95 flex items-center justify-center text-center"
                     >
                       Book Appointment
                     </button>

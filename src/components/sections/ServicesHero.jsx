@@ -31,7 +31,8 @@ export default function ServicesHero({ service }) {
             {service.description}
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-4">
+          {/* Desktop CTA (above 768px) */}
+          <div className="mt-8 hidden min-[769px]:flex flex-wrap gap-4">
             <a 
               href="mailto:info@davemenergy.com"
               className="px-8 py-3.5 border-2 border-white text-white hover:bg-white hover:text-navy-950 rounded-full font-sans font-bold transition-all shadow-lg active:scale-95 flex items-center gap-2 cursor-pointer text-sm"
@@ -42,12 +43,12 @@ export default function ServicesHero({ service }) {
         </div>
 
         {/* Right: Floating Specifications Card */}
-        <div className="lg:col-span-5 flex justify-center lg:justify-end">
+        <div className="lg:col-span-5 flex justify-center lg:justify-end w-full">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-            className="w-full max-w-md bg-navy-900/40 backdrop-blur-md border border-white/10 rounded-3xl p-6 shadow-2xl text-left text-white"
+            className="w-full max-w-full min-[769px]:max-w-md bg-navy-900/40 backdrop-blur-md border border-white/10 rounded-3xl p-6 shadow-2xl text-left text-white"
           >
             <span className="text-slate-300 font-sans text-[11px] font-bold tracking-wider uppercase mb-1 block">
               Service Overview
@@ -70,6 +71,16 @@ export default function ServicesHero({ service }) {
               ))}
             </div>
           </motion.div>
+        </div>
+
+        {/* Mobile CTA (768px and below - placed last after Service Overview) */}
+        <div className="min-[769px]:hidden flex w-full">
+          <a 
+            href="mailto:info@davemenergy.com"
+            className="w-full px-8 py-3.5 border-2 border-white text-white hover:bg-white hover:text-navy-950 rounded-full font-sans font-bold transition-all shadow-lg active:scale-95 flex items-center justify-center gap-2 cursor-pointer text-sm text-center"
+          >
+            Discuss the Project <ArrowRight size={16} />
+          </a>
         </div>
       </div>
     </section>

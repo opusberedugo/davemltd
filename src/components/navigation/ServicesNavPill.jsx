@@ -230,7 +230,7 @@ export default function ServicesNavPill() {
               className={`${mobileContainerClasses} flex items-center overflow-hidden h-[46px] pointer-events-auto`}
               style={{
                 borderRadius: "9999px",
-                width: isMenuExpanded ? "min(310px, calc(100vw - 6px))" : "46px",
+                width: isMenuExpanded ? "min(350px, calc(100vw - 16px))" : "46px",
                 justifyContent: isMenuExpanded ? "flex-start" : "center"
               }}
             >
@@ -255,11 +255,12 @@ export default function ServicesNavPill() {
                     }}
                     exit={{ opacity: 0, x: -10 }}
                     transition={{ duration: 0.15 }}
-                    className="flex items-center gap-1 pr-3 whitespace-nowrap text-xs font-semibold"
+                    className="flex items-center gap-0.5 sm:gap-1 pr-2 sm:pr-3 whitespace-nowrap text-[11px] sm:text-xs font-semibold"
                   >
                     <Link className={mobileLinkClasses} onClick={closeMenu} to="/">Home</Link>
                     <a className={mobileLinkClasses} onClick={closeMenu} href="#process">Process</a>
                     <a className={mobileLinkClasses} onClick={closeMenu} href="#outputs">Deliverables</a>
+                    <a className={mobileLinkClasses} onClick={closeMenu} href="#services-contact">Contact</a>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -290,7 +291,7 @@ export default function ServicesNavPill() {
               {/* CTA Button */}
               <div className="flex items-center gap-3 pl-1">
                 <a 
-                  href="mailto:info@davemenergy.com"
+                  href="#services-contact"
                   className={`px-4 py-2 font-sans text-xs font-bold uppercase tracking-wider rounded-full shadow-sm hover:shadow-md transition-all ${ctaButtonClasses}`}
                 >
                   Get in Touch

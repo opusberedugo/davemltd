@@ -97,7 +97,7 @@ export default function ServicesPage({ serviceId, onBack }) {
       <ServicesCTA service={service} />
 
       {/* BASE FOOTER */}
-      <Footer />
+      <Footer showTopBorder={false} />
 
     </div>
   );

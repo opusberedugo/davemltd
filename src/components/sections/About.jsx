@@ -140,7 +140,7 @@ export default function About() {
   };
 
   return (
-    <section ref={targetRef} className={sectionClass}>
+    <section id="about" ref={targetRef} className={sectionClass}>
       <div className={stickyWrapperClass}>
         <div className="px-6 md:px-12 lg:px-24 mb-6 lg:mb-8 flex items-center gap-8">
           <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-semibold uppercase shrink-0">

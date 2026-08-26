@@ -235,10 +235,10 @@ export default function Navpill({ isVisible = true }) {
                     transition={{ duration: 0.1 }}
                     className="flex items-center gap-0.5 sm:gap-1 pr-2 sm:pr-3 whitespace-nowrap text-[11px] sm:text-xs font-semibold"
                   >
-                    <a className={mobileLinkClasses} onClick={closeMenu} href="#">About</a>
-                    <a className={mobileLinkClasses} onClick={closeMenu} href="#">Services</a>
-                    <a className={mobileLinkClasses} onClick={() => { closeMenu(); }} href="#">Projects</a>
-                    <a className={mobileLinkClasses} onClick={closeMenu} href="#">Contact</a>
+                    <a className={mobileLinkClasses} onClick={closeMenu} href="#about">About</a>
+                    <a className={mobileLinkClasses} onClick={closeMenu} href="#services">Services</a>
+                    <a className={mobileLinkClasses} onClick={() => { closeMenu(); }} href="#services">Projects</a>
+                    <a className={mobileLinkClasses} onClick={closeMenu} href="#contact">Contact</a>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -246,10 +246,10 @@ export default function Navpill({ isVisible = true }) {
           ) : (
             /* Standard Desktop Nav Pill */
             <div className={`${desktopContainerClasses} pointer-events-auto`}>
-              <a className={desktopLinkClasses} href="#">About</a>
-              <a className={desktopLinkClasses} href="#">Services</a>
-              <a className={desktopLinkClasses} href="#">Projects</a>
-              <a className={desktopLinkClasses} href="#">Contact</a>
+              <a className={desktopLinkClasses} href="#about">About</a>
+              <a className={desktopLinkClasses} href="#services">Services</a>
+              <a className={desktopLinkClasses} href="#services">Projects</a>
+              <a className={desktopLinkClasses} href="#contact">Contact</a>
             </div>
           )}
         </motion.nav>
