@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Phone, Mail, MapPin, Send, CheckCircle2, Globe, Sparkles } from "lucide-react";
+import { Phone, Mail, MapPin, Send, CheckCircle2, Globe, Sparkles, Calendar } from "lucide-react";
+import { useCalendly } from "../../context/CalendlyContext";
 
 export default function Contact() {
+  const { openCalendly } = useCalendly();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -249,8 +251,8 @@ export default function Contact() {
                     />
                   </div>
 
-                  {/* Submit Button */}
-                  <div className="pt-2">
+                  {/* Submit & Book Meeting Buttons */}
+                  <div className="pt-2 flex flex-wrap gap-4 items-center">
                     <button
                       type="submit"
                       disabled={isSubmitting}
@@ -264,9 +266,23 @@ export default function Contact() {
                       ) : (
                         <>
                           <span>Send Message</span>
-                          
                         </>
                       )}
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => openCalendly(undefined, {
+                        email: formData.email,
+                        name: formData.name,
+                        customAnswers: {
+                          a1: formData.subject || "General Contact Inquiry"
+                        }
+                      })}
+                      className="px-6 py-3.5 border-2 border-navy-500 text-navy-600 hover:bg-navy-50 font-sans text-sm font-semibold rounded-full transition-all duration-300 shadow-sm flex items-center justify-center gap-2 cursor-pointer active:scale-95"
+                    >
+                      <Calendar size={18} />
+                      <span>Book Meeting / Schedule Call</span>
                     </button>
                   </div>
                 </motion.form>

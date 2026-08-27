@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Grid from "../layout/Grid";
+import { useCalendly } from "../../context/CalendlyContext";
 
 const servicesData = [  
   {
@@ -56,6 +57,7 @@ const servicesData = [
 ];
 
 export default function Services() {
+  const { openCalendly } = useCalendly();
   const [activeServiceIndex, setActiveServiceIndex] = useState(0);
   const serviceRefs = useRef([]);
   const mobileTabContainerRef = useRef(null);
@@ -302,7 +304,11 @@ export default function Services() {
                       View Details
                     </Link>
                     <button 
-                      onClick={() => window.location.href = `mailto:info@davemenergy.com?subject=Appointment Booking - ${service.title}`}
+                      onClick={() => openCalendly(undefined, {
+                        customAnswers: {
+                          a1: `Booking for Service: ${service.title}`
+                        }
+                      })}
                       className="w-full sm:w-auto px-5 py-3 border border-steel-400 text-steel-700 bg-transparent font-sans text-sm font-semibold rounded-full hover:bg-steel-200 hover:text-navy-700 transition-all duration-300 shadow-sm cursor-pointer active:scale-95 flex items-center justify-center text-center"
                     >
                       Book Appointment

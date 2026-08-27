@@ -1,8 +1,19 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { useCalendly } from "../../context/CalendlyContext";
 
 export default function ServicesHero({ service }) {
+  const { openCalendly } = useCalendly();
+
+  const handleDiscussProject = () => {
+    openCalendly(undefined, {
+      customAnswers: {
+        a1: `Project Inquiry: ${service?.title || "General Service"}`
+      }
+    });
+  };
+
   return (
     <section id="services-hero" className="relative pt-32 lg:pt-40 min-h-[80vh] lg:min-h-[90vh] flex items-center bg-navy-950 overflow-hidden">
       {/* Full-width image background with linear-radial mask overlay */}
@@ -33,12 +44,12 @@ export default function ServicesHero({ service }) {
 
           {/* Desktop CTA (above 768px) */}
           <div className="mt-8 hidden min-[769px]:flex flex-wrap gap-4">
-            <a 
-              href="mailto:info@davemenergy.com"
+            <button 
+              onClick={handleDiscussProject}
               className="px-8 py-3.5 border-2 border-white text-white hover:bg-white hover:text-navy-950 rounded-full font-sans font-bold transition-all shadow-lg active:scale-95 flex items-center gap-2 cursor-pointer text-sm"
             >
               Discuss the Project <ArrowRight size={16} />
-            </a>
+            </button>
           </div>
         </div>
 
@@ -75,12 +86,12 @@ export default function ServicesHero({ service }) {
 
         {/* Mobile CTA (768px and below - placed last after Service Overview) */}
         <div className="min-[769px]:hidden flex w-full">
-          <a 
-            href="mailto:info@davemenergy.com"
+          <button 
+            onClick={handleDiscussProject}
             className="w-full px-8 py-3.5 border-2 border-white text-white hover:bg-white hover:text-navy-950 rounded-full font-sans font-bold transition-all shadow-lg active:scale-95 flex items-center justify-center gap-2 cursor-pointer text-sm text-center"
           >
             Discuss the Project <ArrowRight size={16} />
-          </a>
+          </button>
         </div>
       </div>
     </section>

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
+import { useCalendly } from '../../context/CalendlyContext';
 
 const logoPath = "M-0 2848.7c0,0 0,-1564.64 0,-2374.78 0,-125.7 49.93,-246.23 138.8,-335.12 88.89,-88.89 209.44,-138.8 335.12,-138.8 0.02,0 0.02,0 0.02,0l0 1358.94c-2.52,27.89 -3.82,56.13 -3.82,84.63 0,28.52 1.3,56.75 3.82,84.62l0 859.69 941.54 0 0 -0.13c5.2,0.07 10.43,0.13 15.65,0.13 8.98,0 17.93,-0.13 26.85,-0.37 377.17,-10.18 700.34,-234.34 848.17,-553.25 55.21,-119.07 85.99,-251.38 85.99,-390.69 0,-110.4 -19.32,-216.44 -54.84,-314.96 -13.44,-37.26 -29.19,-73.46 -47.07,-108.41 -111.09,-217.03 -304.88,-386.29 -540.59,-467.75 -91.65,-31.66 -189.69,-50.06 -291.66,-52.8 -8.92,-0.25 -17.87,-0.37 -26.85,-0.37 -5.22,0 -10.45,0.03 -15.65,0.12 0,0 0,583.93 0,1000.6 0,108.96 -43.29,213.44 -120.33,290.48 -77.04,77.05 -181.53,120.33 -290.48,120.33 -41.6,0 -68.92,0 -68.92,0l0 -1910.81 439.21 0c13.54,0 27.06,0.17 40.52,0.54 153.79,4.15 301.64,31.91 439.93,79.69 355.55,122.83 647.82,378.14 815.39,705.51l635.49 1463.7 885.93 -2249.44 516.89 0 890.13 2278.09 897.22 -2278.09 498.34 0 1193.13 2848.7 -514.99 0 -925.2 -2283.86 -899.47 2283.86 -494.82 0 -917.96 -2266.05 -892.49 2266.05 -485.62 0 -362.54 -835.06c-223.03,481.02 -710.47,819.14 -1279.36,834.52 -13.46,0.34 -26.98,0.54 -40.52,0.54l-1374.96 0z";
 
 const paths = [logoPath];
 
 export default function Hero({ onAnimationComplete }) {
+  const { openCalendly } = useCalendly();
   const [animationPhase, setAnimationPhase] = useState('hidden');
   const [showText, setShowText] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -216,22 +218,24 @@ export default function Hero({ onAnimationComplete }) {
 
         {/* CTA Buttons */}
         <div className="flex flex-wrap gap-4 mt-8">
-          <motion.button
+          <motion.a
+            href="#services"
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={showText ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.5, ease: "easeOut", delay: 1.0 }}
-            className="px-6 py-3 md:px-8 md:py-4 text-sm md:text-base text-white border-navy-600 border-2 bg-navy-600 rounded-full font-semibold transition-all shadow-lg hover:bg-navy-700 hover:border-navy-700 hover:text-white cursor-pointer"
+            className="px-6 py-3 md:px-8 md:py-4 text-sm md:text-base text-white border-navy-600 border-2 bg-navy-600 rounded-full font-semibold transition-all shadow-lg hover:bg-navy-700 hover:border-navy-700 hover:text-white cursor-pointer inline-flex items-center justify-center text-decoration-none"
           >
             Learn More
-          </motion.button>
+          </motion.a>
          
           <motion.button
+            onClick={() => openCalendly()}
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={showText ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.5, ease: "easeOut", delay: 1.0 }}
             className="px-6 py-3 md:px-8 md:py-4 text-sm md:text-base text-steel-500 border-steel-500 border-2 rounded-full font-semibold transition-all shadow-lg hover:bg-steel-500 hover:text-white cursor-pointer"
           >
-            Get Quote
+            Book Call / Get Quote
           </motion.button>
         </div>
       </motion.div>

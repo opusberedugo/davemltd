@@ -1,8 +1,19 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
+import { useCalendly } from "../../context/CalendlyContext";
 
 export default function ServicesSplitCard({ service }) {
+  const { openCalendly } = useCalendly();
+
   if (!service) return null;
+
+  const handleDiscussProject = () => {
+    openCalendly(undefined, {
+      customAnswers: {
+        a1: `Site Scale Discussion: ${service?.title || "Integrated Systems"}`
+      }
+    });
+  };
 
   return (
     <section className="py-24 px-6 md:px-12 lg:px-24 bg-steel-50 border-t border-slate-200/40">
@@ -26,12 +37,12 @@ export default function ServicesSplitCard({ service }) {
             </div>
 
             <div className="mt-12">
-              <a 
-                href="mailto:info@davemenergy.com"
-                className="inline-flex items-center gap-2 text-navy-500 hover:text-navy-700 font-sans font-bold text-sm transition-colors cursor-pointer group"
+              <button 
+                onClick={handleDiscussProject}
+                className="inline-flex items-center gap-2 text-navy-500 hover:text-navy-700 font-sans font-bold text-sm transition-colors cursor-pointer group bg-transparent border-none p-0"
               >
                 Discuss the Project <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-              </a>
+              </button>
             </div>
           </div>
 

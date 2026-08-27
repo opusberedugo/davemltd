@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, CheckCircle2, Mail, Sparkles } from "lucide-react";
+import { Send, CheckCircle2, Mail, Sparkles, Calendar } from "lucide-react";
+import { useCalendly } from "../../context/CalendlyContext";
 
 export default function ServicesContact({ service }) {
+  const { openCalendly } = useCalendly();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -76,8 +78,21 @@ export default function ServicesContact({ service }) {
               </p>
             </div>
 
-            {/* Direct Contact Button */}
-            <div className="pt-4">
+            {/* Direct Contact & Calendly Booking Buttons */}
+            <div className="pt-4 flex flex-wrap gap-3">
+              <button
+                type="button"
+                onClick={() => openCalendly(undefined, {
+                  customAnswers: {
+                    a1: `Inquiry for ${service?.title || "Service"}`
+                  }
+                })}
+                className="px-6 py-3.5 bg-cyan-500 hover:bg-cyan-400 text-navy-950 font-sans text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-lg shadow-cyan-500/20 flex items-center gap-2.5 active:scale-95 cursor-pointer"
+              >
+                <span>Book Appointment</span>
+                <Calendar size={16} />
+              </button>
+
               <a
                 href={`mailto:info@davemenergy.com?subject=Inquiry for ${service?.title || "Service"}`}
                 className="px-6 py-3.5 bg-white/10 hover:bg-white/20 border border-white/15 text-white font-sans text-xs font-bold uppercase tracking-wider rounded-xl transition-all backdrop-blur flex items-center gap-2.5 shadow-md active:scale-95 cursor-pointer"
