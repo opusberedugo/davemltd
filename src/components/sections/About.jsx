@@ -165,7 +165,7 @@ export default function About() {
             className={`${slideClass} ${isSticky ? "absolute inset-0 flex flex-col" : "relative"}`}
           >
             <motion.div 
-              className="max-w-7xl mx-auto w-full my-auto"
+              className="max-w-6.5xl mx-auto w-full my-auto"
               variants={containerVariants}
               initial="hidden"
               animate={!isSticky || activeIndex === 0 ? "visible" : "hidden"}
@@ -277,7 +277,7 @@ export default function About() {
             }
             className={`${slideClass} ${isSticky ? "absolute inset-0 flex flex-col" : "relative"}`}
           >
-            <div className="max-w-7xl mx-auto w-full my-auto">
+            <div className="max-w-6.5xl mx-auto w-full my-auto">
               <span className="text-steel-300 text-xs lg:text-sm font-semibold uppercase tracking-wider">
                 What we believe in?
               </span>
@@ -338,7 +338,7 @@ export default function About() {
             }
             className={`${slideClass} ${isSticky ? "absolute inset-0 flex flex-col" : "relative"}`}
           >
-            <div className="max-w-7xl mx-auto w-full my-auto">
+            <div className="max-w-6.5xl mx-auto w-full my-auto">
               <span className="text-steel-300 text-xs lg:text-sm font-semibold uppercase tracking-wider">
                 What we believe in?
               </span>
