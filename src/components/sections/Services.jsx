@@ -173,26 +173,26 @@ export default function Services() {
   };
 
   return (
-    <section id="services" className="bg-steel-100 py-20 px-6 sm:px-8 md:px-16 lg:px-24"> 
-      <div className="max-w-7xl mx-auto">
-        <Grid className="grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+    <section id="services" className="bg-steel-100 py-16 md:py-20 px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 2xl:px-24"> 
+      <div className="max-w-7xl 2xl:max-w-[1500px] mx-auto">
+        <Grid className="grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-16 items-start">
           
           {/* Left Column: Title, Intro & Service Navigation (Sticky on Desktop) */}
           <div className="lg:col-span-5 flex flex-col lg:sticky lg:top-24 lg:self-start lg:max-h-[calc(100vh-6rem)]">
-            <span className="text-steel-600 font-sans font-medium text-sm tracking-widest uppercase mb-2">
+            <span className="text-steel-600 font-sans font-medium text-xs sm:text-sm tracking-widest uppercase mb-2">
               (our capabilities)
             </span>
             
-            <h2 className="text-navy-500 font-display font-semibold text-2xl md:text-3xl lg:text-4xl leading-tight">
+            <h2 className="text-navy-500 font-display font-semibold text-2xl md:text-3xl lg:text-3xl xl:text-4xl leading-tight">
               Safeguarding Resources, Delivering Solutions
             </h2>
             
-            <p className="text-slate-700 text-sm mt-6 leading-relaxed font-sans max-w-xl">
+            <p className="text-slate-700 text-xs sm:text-sm mt-4 xl:mt-6 leading-relaxed font-sans max-w-xl">
               Established in 2009 and guided by a rich industry heritage and an unwavering commitment to environmental safety, Davem Energy Resources Limited delivers specialized, cost-effective solutions across the West African energy corridor.
             </p>
 
             {/* Interactive Vertical Dial Selector for Desktop */}
-            <div className="hidden lg:block relative mt-8 w-full">
+            <div className="hidden lg:block relative mt-6 xl:mt-8 w-full">
               {/* Scrollable Container */}
               <div
                 ref={desktopTabContainerRef}
@@ -209,7 +209,7 @@ export default function Services() {
                         opacity: styles.opacity,
                         transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
                       }}
-                      className="border-b border-steel-300/30 last:border-b-0 py-4 cursor-pointer select-none shrink-0"
+                      className="border-b border-steel-300/30 last:border-b-0 py-3.5 xl:py-4 cursor-pointer select-none shrink-0"
                     >
                       <div className="flex items-center justify-between transition-all duration-300">
                         <span
@@ -219,12 +219,12 @@ export default function Services() {
                             display: "inline-block",
                             transition: "transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease",
                           }}
-                          className={`font-sans text-base md:text-lg ${styles.colorClass}`}
+                          className={`font-sans text-sm md:text-base xl:text-lg ${styles.colorClass}`}
                         >
                           {service.shortTitle}
                         </span>
                         
-                        <span className={`text-lg transition-all duration-300 mr-2 text-navy-500 ${styles.indicatorOpacity}`}>
+                        <span className={`text-base xl:text-lg transition-all duration-300 mr-2 text-navy-500 ${styles.indicatorOpacity}`}>
                           →
                         </span>
                       </div>
@@ -264,7 +264,7 @@ export default function Services() {
           </div>
 
           {/* Right Column: Vertical stack of service detail blocks */}
-          <div className="lg:col-span-7 flex flex-col space-y-32 lg:space-y-40 pb-32">
+          <div className="lg:col-span-7 flex flex-col space-y-24 lg:space-y-32 xl:space-y-40 pb-24 lg:pb-32">
             {servicesData.map((service, index) => {
               return (
                 <motion.div
@@ -277,7 +277,7 @@ export default function Services() {
                   className="flex flex-col"
                 >
                   {/* Service Image */}
-                  <div className="w-full aspect-[16/10] min-h-[250px] md:min-h-[350px] rounded-3xl overflow-hidden shadow-md bg-steel-200">
+                  <div className="w-full aspect-[16/10] min-h-[220px] sm:min-h-[260px] md:min-h-[340px] rounded-3xl overflow-hidden shadow-md bg-steel-200">
                     <img
                       src={service.image}
                       alt={service.title}
@@ -286,17 +286,17 @@ export default function Services() {
                   </div>
 
                   {/* Service Title */}
-                  <h3 className="text-2xl md:text-3xl font-display font-semibold text-navy-500 mt-8 leading-tight">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-semibold text-navy-500 mt-6 md:mt-8 leading-tight">
                     {service.title}
                   </h3>
 
                   {/* Service Description */}
-                  <p className="text-slate-700 text-sm md:text-base mt-4 leading-relaxed font-sans max-w-2xl">
+                  <p className="text-slate-700 text-xs sm:text-sm md:text-base mt-3 md:mt-4 leading-relaxed font-sans max-w-2xl">
                     {service.description}
                   </p>
 
                   {/* Actions */}
-                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mt-8 whitespace-normal sm:whitespace-nowrap overflow-x-visible w-full sm:w-auto">
+                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mt-6 md:mt-8 whitespace-normal sm:whitespace-nowrap overflow-x-visible w-full sm:w-auto">
                     <Link 
                       to={`/services/${service.id}`}
                       className="w-full sm:w-auto px-5 py-3 bg-navy-500 text-white font-sans text-sm font-semibold rounded-full hover:bg-navy-600 transition-all duration-300 shadow-sm cursor-pointer hover:shadow-md active:scale-95 flex items-center justify-center text-decoration-none text-center"

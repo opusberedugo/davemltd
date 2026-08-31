@@ -114,8 +114,8 @@ export default function About() {
     : "flex flex-col w-full gap-20 md:gap-24";
 
   const slideClass = isSticky 
-    ? "w-full px-6 md:px-12 lg:px-24 h-full overflow-y-auto pb-12 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]" 
-    : "w-full px-6 md:px-12 lg:px-24 h-auto pb-0";
+    ? "w-full px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 2xl:px-24 h-full overflow-y-auto pb-8 lg:pb-10 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]" 
+    : "w-full px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 2xl:px-24 h-auto pb-0";
 
   const handleWheel = (e) => {
     const container = e.currentTarget;
@@ -142,10 +142,12 @@ export default function About() {
   return (
     <section id="about" ref={targetRef} className={sectionClass}>
       <div className={stickyWrapperClass}>
-        <div className="px-6 md:px-12 lg:px-24 mb-6 lg:mb-8 flex items-center gap-8">
-          <h1 className="text-white text-3xl md:text-4xl lg:text-5xl lg:leading-30 font-google font-semibold uppercase shrink-0">
-            About Us
-          </h1>
+        <div className="w-full px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 2xl:px-24 mb-4 lg:mb-6">
+          <div className="max-w-7xl 2xl:max-w-[1500px] mx-auto flex items-center gap-8 w-full">
+            <h1 className="text-white text-3xl md:text-4xl lg:text-5xl lg:leading-15 font-google font-semibold uppercase shrink-0">
+              About Us
+            </h1>
+          </div>
         </div>
         
         <div className={mainClass}>
@@ -165,16 +167,16 @@ export default function About() {
             className={`${slideClass} ${isSticky ? "absolute inset-0 flex flex-col" : "relative"}`}
           >
             <motion.div 
-              className="max-w-6.5xl mx-auto w-full my-auto"
+              className="max-w-7xl 2xl:max-w-[1500px] mx-auto w-full my-auto"
               variants={containerVariants}
               initial="hidden"
               animate={!isSticky || activeIndex === 0 ? "visible" : "hidden"}
             >
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 xl:gap-12 items-stretch">
                 
                 {/* Left Column: Image */}
                 <motion.div variants={itemVariants} className="lg:col-span-5 flex flex-col">
-                  <div className="relative w-full aspect-[4/3] sm:aspect-[4/5] lg:aspect-auto lg:h-full rounded-[2rem] overflow-hidden shadow-2xl border border-white/10 bg-navy-800 flex-1 flex flex-col">
+                  <div className="relative w-full aspect-[4/3] sm:aspect-[4/5] lg:aspect-auto lg:h-full rounded-[2rem] overflow-hidden shadow-2xl border border-white/10 bg-navy-800 flex-1 flex flex-col min-h-[220px]">
                     <img
                       src="/about_davem_marine.png"
                       alt="About Davem Energy Marine Logistics"
@@ -182,7 +184,7 @@ export default function About() {
                     />
                     
                      {/* Floating Badge */}
-                     <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-md rounded-2xl p-4 shadow-2xl border border-slate-200/50 flex items-center gap-3 max-w-[240px] z-10">
+                     <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-md rounded-2xl p-3.5 sm:p-4 shadow-2xl border border-slate-200/50 flex items-center gap-3 max-w-[240px] z-10">
                        <div className="flex flex-col text-right">
                          <span className="text-[9px] font-sans font-bold text-navy-600 uppercase tracking-widest leading-none">
                            Established
@@ -191,7 +193,7 @@ export default function About() {
                            since
                          </span>
                        </div>
-                       <div className="text-3xl font-black text-navy-600 tracking-tight shrink-0 font-display border-l border-slate-200/80 pl-3">
+                       <div className="text-2xl sm:text-3xl font-black text-navy-600 tracking-tight shrink-0 font-display border-l border-slate-200/80 pl-3">
                          2009
                        </div>
                      </div>
@@ -200,25 +202,25 @@ export default function About() {
 
                 {/* Right Column: Content Card */}
                 <motion.div variants={itemVariants} className="lg:col-span-7 flex flex-col">
-                  <div className="bg-slate-50 text-slate-800 rounded-[2rem] p-5 md:p-6 lg:p-6 xl:p-8 flex flex-col justify-between shadow-2xl border border-slate-200/40 flex-1 lg:min-h-[380px] xl:min-h-[460px]">
+                  <div className="bg-slate-50 text-slate-800 rounded-[2rem] p-5 sm:p-6 lg:p-5 xl:p-8 flex flex-col justify-between shadow-2xl border border-slate-200/40 flex-1">
                     <div>
                       <span className="text-navy-600 font-sans font-semibold text-xs tracking-widest uppercase mb-1 block">
                         (who we are)
                       </span>
                       
-                      <h2 className="text-navy-950 font-display font-bold text-xl md:text-2xl lg:text-2xl xl:text-3xl leading-tight">
+                      <h2 className="text-navy-950 font-display font-bold text-lg sm:text-2xl lg:text-xl xl:text-3xl leading-tight">
                         Pioneering Sustainable Energy & Environmental Protection
                       </h2>
                       
-                      <p className="text-slate-600 text-xs mt-2 leading-relaxed font-sans">
+                      <p className="text-slate-600 text-xs xl:text-sm mt-2 leading-relaxed font-sans">
                         Davem Energy Resources Limited (RC 845000) is a multifaceted indigenous company incorporated under the Companies and Allied Matters Act of 1990 to deliver cost-effective Engineering, Marine, Procurement, and Logistics Solutions.
                       </p>
 
-                      <p className="text-slate-600 text-xs mt-2 leading-relaxed font-sans">
+                      <p className="text-slate-600 text-xs xl:text-sm mt-1.5 xl:mt-2 leading-relaxed font-sans">
                         We have been at the forefront of oil spill control, containment, and clean-up, assisting both Government agencies and private sector organizations in setting up and managing oil pollution response facilities. We were operators of the largest Oil Spill Response organization in Nigeria and the entire West Coast of Africa called Clean Nigeria Associates (CNA) with over 36 years of Experience.
                       </p>
 
-                      <p className="text-slate-600 text-xs mt-2 leading-relaxed font-sans">
+                      <p className="text-slate-600 text-xs xl:text-sm mt-1.5 xl:mt-2 leading-relaxed font-sans">
                         Davem Energy Resources Limited has been active in waste management, soil remediation, EIA., contingency plans, capacity building, manpower development, and training. We pride ourselves in protecting the Nigerian environment.
                       </p>
 
@@ -230,7 +232,7 @@ export default function About() {
                     </div>
 
                     {/* Compact Horizontal List Sub-cards */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-2.5 xl:gap-3 mt-3 xl:mt-4">
                       <div className="bg-white rounded-xl p-3 border border-slate-200/50 shadow-sm flex items-start gap-3 hover:shadow-md transition-shadow duration-300">
                         <div className="w-8 h-8 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 shrink-0 mt-0.5">
                           <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -277,7 +279,7 @@ export default function About() {
             }
             className={`${slideClass} ${isSticky ? "absolute inset-0 flex flex-col" : "relative"}`}
           >
-            <div className="max-w-6.5xl mx-auto w-full my-auto">
+            <div className="max-w-7xl 2xl:max-w-[1500px] mx-auto w-full my-auto">
               <span className="text-steel-300 text-xs lg:text-sm font-semibold uppercase tracking-wider">
                 What we believe in?
               </span>
@@ -285,7 +287,7 @@ export default function About() {
                 Our Vision
               </h3>
               <motion.div 
-                className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 lg:mt-8"
+                className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-5 xl:gap-6 mt-4 lg:mt-6 xl:mt-8"
                 variants={containerVariants}
                 initial="hidden"
                 animate={!isSticky || activeIndex === 1 ? "visible" : "hidden"}
@@ -338,7 +340,7 @@ export default function About() {
             }
             className={`${slideClass} ${isSticky ? "absolute inset-0 flex flex-col" : "relative"}`}
           >
-            <div className="max-w-6.5xl mx-auto w-full my-auto">
+            <div className="max-w-7xl 2xl:max-w-[1500px] mx-auto w-full my-auto">
               <span className="text-steel-300 text-xs lg:text-sm font-semibold uppercase tracking-wider">
                 What we believe in?
               </span>
@@ -346,7 +348,7 @@ export default function About() {
                 Our Mission & Values
               </h3>
               <motion.div 
-                className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 lg:mt-8"
+                className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-5 xl:gap-6 mt-4 lg:mt-6 xl:mt-8"
                 variants={containerVariants}
                 initial="hidden"
                 animate={!isSticky || activeIndex === 2 ? "visible" : "hidden"}

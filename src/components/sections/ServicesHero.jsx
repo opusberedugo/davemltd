@@ -26,7 +26,7 @@ export default function ServicesHero({ service }) {
         <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/70 to-transparent lg:bg-gradient-to-r lg:from-navy-950/90 lg:to-navy-950/20" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-16 w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div className="max-w-7xl 2xl:max-w-[1500px] mx-auto px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 2xl:px-24 py-12 md:py-16 w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
         
         {/* Left: Copy & CTA */}
         <div className="lg:col-span-7 flex flex-col items-start text-left">

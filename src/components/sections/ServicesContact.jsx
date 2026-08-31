@@ -39,7 +39,7 @@ export default function ServicesContact({ service }) {
   };
 
   return (
-    <section id="services-contact" className="relative py-24 px-6 md:px-12 lg:px-24 bg-navy-950 text-white overflow-hidden w-full">
+    <section id="services-contact" className="relative py-16 md:py-24 px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 2xl:px-24 bg-navy-950 text-white overflow-hidden w-full">
       
       {/* Background Vibrant Glow / Mesh Aura matching reference image */}
       <div className="absolute inset-0 pointer-events-none">
@@ -48,7 +48,7 @@ export default function ServicesContact({ service }) {
         <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-navy-600/30 rounded-full blur-[140px]" />
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-7xl 2xl:max-w-[1500px] mx-auto relative z-10">
         
         {/* Outer Dark Glassmorphism Container Card */}
         <motion.div 

@@ -5,10 +5,10 @@ import { DavemLogo } from "../navigation/ServicesNavPill";
 
 export default function Footer({ showTopBorder = true }) {
   return (
-    <footer id="contact" className={`bg-navy-950 text-white ${showTopBorder ? "border-t border-white/5" : ""} py-16 px-6 md:px-12 lg:px-24 text-left w-full`}>
-      <div className="max-w-7xl mx-auto">
+    <footer id="contact" className={`bg-navy-950 text-white ${showTopBorder ? "border-t border-white/5" : ""} py-16 px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 2xl:px-24 text-left w-full`}>
+      <div className="max-w-7xl 2xl:max-w-[1500px] mx-auto">
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-16">
           
           {/* Col 1: Logo & Copy */}
           <div className="lg:col-span-4 flex flex-col items-start">

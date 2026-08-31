@@ -33,14 +33,14 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-24 px-6 md:px-12 lg:px-24 bg-steel-100/60 overflow-hidden">
+    <section id="contact" className="relative py-16 md:py-24 px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 2xl:px-24 bg-steel-100/70 overflow-hidden">
       {/* Background Subtle Gradient & Grid Accent */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-steel-200/40 via-transparent to-transparent pointer-events-none" />
       
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-7xl 2xl:max-w-[1500px] mx-auto relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-12 lg:mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-navy-50 border border-navy-200/60 text-navy-600 font-sans font-bold text-xs uppercase tracking-widest mb-4 shadow-sm">
             <span>Contact Us</span>
           </div>
@@ -49,7 +49,7 @@ export default function Contact() {
             Get In Touch
           </h2>
           
-          <p className="text-slate-600 text-sm md:text-base mt-4 leading-relaxed font-sans">
+          <p className="text-slate-600 text-xs sm:text-sm md:text-base mt-3 md:mt-4 leading-relaxed font-sans">
             We'll create tailored engineering, marine logistics, and environmental solutions to suit your project specifications across West Africa.
           </p>
         </div>
@@ -60,11 +60,11 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="bg-white rounded-3xl lg:rounded-4xl p-4 sm:p-6 lg:p-8 shadow-xl shadow-slate-200/60 border border-slate-200/80 grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch"
+          className="bg-white rounded-3xl lg:rounded-4xl p-4 sm:p-6 lg:p-6 xl:p-8 shadow-xl shadow-slate-200/60 border border-slate-200/80 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 xl:gap-10 items-stretch"
         >
           
           {/* Left Column: Dark Navy Brand Contact Information Box */}
-          <div className="max-[350px]:hidden lg:col-span-5 bg-gradient-to-br from-navy-900 via-navy-950 to-navy-900 text-white rounded-2xl lg:rounded-3xl p-6 sm:p-8 lg:p-10 flex flex-col justify-between relative overflow-hidden shadow-lg">
+          <div className="max-[350px]:hidden lg:col-span-5 bg-gradient-to-br from-navy-900 via-navy-950 to-navy-900 text-white rounded-2xl lg:rounded-3xl p-6 sm:p-8 lg:p-7 xl:p-10 flex flex-col justify-between relative overflow-hidden shadow-lg">
             
             {/* Ambient Graphic Accent */}
             <div className="absolute -bottom-16 -right-16 w-56 h-56 rounded-full bg-steel-400/15 blur-2xl pointer-events-none" />

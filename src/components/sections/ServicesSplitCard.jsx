@@ -16,8 +16,8 @@ export default function ServicesSplitCard({ service }) {
   };
 
   return (
-    <section className="py-24 px-6 md:px-12 lg:px-24 bg-steel-50 border-t border-slate-200/40">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-16 md:py-24 px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 2xl:px-24 bg-steel-50 border-t border-slate-200/40">
+      <div className="max-w-7xl 2xl:max-w-[1500px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
           
           {/* Left Card: White Summary Card */}

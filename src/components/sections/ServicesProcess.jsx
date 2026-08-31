@@ -10,9 +10,9 @@ export default function ServicesProcess({ service, activeStep: externalActiveSte
   if (!service || !service.process) return null;
 
   return (
-    <section id="process" className="py-24 px-6 md:px-12 lg:px-24 bg-white border-t border-slate-200/40">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col items-start text-left mb-12">
+    <section id="process" className="py-16 md:py-24 px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 2xl:px-24 bg-white border-t border-slate-200/40">
+      <div className="max-w-7xl 2xl:max-w-[1500px] mx-auto">
+        <div className="flex flex-col items-start text-left mb-10 md:mb-12">
           <span className="text-steel-600 font-sans font-bold text-xs uppercase tracking-widest mb-2">
             How We Work
           </span>
@@ -21,7 +21,7 @@ export default function ServicesProcess({ service, activeStep: externalActiveSte
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-stretch">
           {/* Left Column: Interactive Timeline List */}
           <div className="lg:col-span-7 flex flex-col space-y-4">
             {service.process.map((step, idx) => {

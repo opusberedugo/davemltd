@@ -6,8 +6,8 @@ export default function ServicesRelated({ relatedServices, handleRelatedClick, o
   if (!relatedServices || relatedServices.length === 0) return null;
 
   return (
-    <section id="related" className="py-24 px-6 md:px-12 lg:px-24 bg-steel-50 border-t border-slate-200/40">
-      <div className="max-w-7xl mx-auto">
+    <section id="related" className="py-16 md:py-24 px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 2xl:px-24 bg-steel-50 border-t border-slate-200/40">
+      <div className="max-w-7xl 2xl:max-w-[1500px] mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 text-left">
           <div>
             <div className="flex items-center gap-2 text-slate-500 font-sans font-bold text-xs tracking-widest uppercase mb-1">

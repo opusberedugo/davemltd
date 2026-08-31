@@ -4,9 +4,9 @@ import { Zap } from "lucide-react";
 
 export default function ServicesStats({ service }) {
   return (
-    <section className="py-24 px-6 md:px-12 lg:px-24 bg-white">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-stretch">
+    <section className="py-16 md:py-24 px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 2xl:px-24 bg-white">
+      <div className="max-w-7xl 2xl:max-w-[1500px] mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-stretch">
           
           {/* Left side: Straight/Square Image Container that spans from the top label to the bottom */}
           <div className="lg:col-span-5 flex min-h-[380px] lg:min-h-full">

@@ -18,9 +18,9 @@ export default function ServicesOutputs({ service, openAccordion: externalOpenAc
   if (!service || !service.outputs) return null;
 
   return (
-    <section id="outputs" className="py-24 px-6 md:px-12 lg:px-24 bg-white border-t border-slate-200/40">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+    <section id="outputs" className="py-16 md:py-24 px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 2xl:px-24 bg-white border-t border-slate-200/40">
+      <div className="max-w-7xl 2xl:max-w-[1500px] mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-start">
           
           {/* Left side: Tall image card */}
           <div className="lg:col-span-4 lg:sticky lg:top-28 flex flex-col items-start text-left">

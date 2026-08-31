@@ -101,144 +101,150 @@ export default function Hero({ onAnimationComplete }) {
 
   return (
     <section className="relative min-h-[640px] md:h-screen w-full font-sans overflow-hidden bg-white">
-      {/* Wrapper that dynamically shifts alignment, allowing Framer Motion's 'layout' to interpolate perfectly */}
-      <div className={`absolute inset-0 pointer-events-none flex ${
+      {/* Wrapper that dynamically shifts alignment from screen center to vertically centered on desktop */}
+      <div className={`absolute inset-0 pointer-events-none px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 2xl:px-24 flex ${
         animationPhase === 'topLeft' 
-          ? 'items-start justify-start pt-28 pl-6 md:pt-[80px] md:pl-[80px]' 
+          ? 'items-start md:items-center justify-start pt-24 sm:pt-28 md:pt-0' 
           : 'items-center justify-center'
       }`}>
-        <motion.div 
-          layout
-          className="relative pointer-events-none"
-          variants={containerVariants}
-          initial="hidden"
-          animate={animationPhase}
-        >
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            viewBox="0 0 8262.72 4956.33" 
-            preserveAspectRatio="xMidYMid meet"
-            className="w-full h-auto drop-shadow-2xl"
+        <div className={`max-w-7xl 2xl:max-w-[1500px] mx-auto w-full flex flex-col justify-center ${
+          animationPhase === 'center' ? 'items-center' : 'items-start'
+        }`}>
+          <motion.div 
+            layout
+            className="relative pointer-events-none"
+            variants={containerVariants}
+            initial="hidden"
+            animate={animationPhase}
           >
-            <defs>
-              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-                <feGaussianBlur stdDeviation="35" result="coloredBlur"/>
-                <feMerge>
-                  <feMergeNode in="coloredBlur"/>
-                  <feMergeNode in="SourceGraphic"/>
-                </feMerge>
-              </filter>
-            </defs>
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              viewBox="0 0 8262.72 4956.33" 
+              preserveAspectRatio="xMidYMid meet"
+              className="w-full h-auto drop-shadow-2xl"
+            >
+              <defs>
+                <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="35" result="coloredBlur"/>
+                  <feMerge>
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              </defs>
 
-            {paths.map((d, index) => (
-              <motion.path
-                key={index}
-                d={d}
-                custom={index}
-                variants={pathVariants}
-                initial="hidden"
-                animate={controls}
-                strokeWidth="10"
-                strokeLinejoin="round"
-                strokeLinecap="round"
-              />
-            ))}
-
-            {/* Glowing Tracer Dot drawing along the logo path - fully synced and scaled */}
-            {animationPhase !== 'hidden' && (
-              <circle r="35" fill="#1F456E" filter="url(#glow)">
-                <animateMotion 
-                  dur="3.0s" 
-                  repeatCount="1" 
-                  fill="freeze"
-                  calcMode="spline" 
-                  keyTimes="0;1" 
-                  keySplines="0.47 0 0.745 0.715"
-                  path={paths[0]} 
+              {paths.map((d, index) => (
+                <motion.path
+                  key={index}
+                  d={d}
+                  custom={index}
+                  variants={pathVariants}
+                  initial="hidden"
+                  animate={controls}
+                  strokeWidth="10"
+                  strokeLinejoin="round"
+                  strokeLinecap="round"
                 />
-                <animate 
-                  attributeName="opacity" 
-                  values="1;1;0" 
-                  keyTimes="0;0.95;1" 
-                  dur="3.2s" 
-                  fill="freeze" 
-                />
-              </circle>
-            )}
+              ))}
 
-            {/* Sub-text tags that fade in below the logo icon */}
-            {showText && (
-              <g>
-                <motion.text
-                  x="-88.16"
-                  y="3975.62"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 1.0, delay: 0.2 }}
-                  style={{
-                    fontFamily: "'Google Sans', 'Inter', sans-serif",
-                    fontWeight: "bold",
-                    fontSize: "1088.63px",
-                    fill: "#94ACC3"
-                  }}
+              {/* Glowing Tracer Dot drawing along the logo path - fully synced and scaled */}
+              {animationPhase !== 'hidden' && (
+                <circle r="35" fill="#1F456E" filter="url(#glow)">
+                  <animateMotion 
+                    dur="3.0s" 
+                    repeatCount="1" 
+                    fill="freeze" 
+                    calcMode="spline" 
+                    keyTimes="0;1" 
+                    keySplines="0.47 0 0.745 0.715" 
+                    path={paths[0]} 
+                  />
+                  <animate 
+                    attributeName="opacity" 
+                    values="1;1;0" 
+                    keyTimes="0;0.95;1" 
+                    dur="3.2s" 
+                    fill="freeze" 
+                  />
+                </circle>
+              )}
+
+              {/* Sub-text tags that fade in below the logo icon */}
+              {showText && (
+                <g>
+                  <motion.text
+                    x="-88.16"
+                    y="3975.62"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 1.0, delay: 0.2 }}
+                    style={{
+                      fontFamily: "'Google Sans', 'Inter', sans-serif",
+                      fontWeight: "bold",
+                      fontSize: "1088.63px",
+                      fill: "#94ACC3"
+                    }}
+                  >
+                    DAVEM ENERGY
+                  </motion.text>
+                  <motion.text
+                    x="-84.98"
+                    y="4939.33"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 1.0, delay: 0.5 }}
+                    style={{
+                      fontFamily: "'Google Sans Medium', 'Inter', sans-serif",
+                      fontWeight: "500",
+                      fontSize: "1062.36px",
+                      fill: "#94ACC3"
+                    }}
+                  >
+                    RESOURCES LTD.
+                  </motion.text>
+                </g>
+              )}
+            </svg>
+          </motion.div>
+
+          {/* Hero Paragraph & Buttons - Flows naturally below the logo */}
+          {animationPhase === 'topLeft' && (
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={showText ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="pointer-events-auto mt-4 sm:mt-6 w-full max-w-2xl lg:max-w-3xl text-left"
+            >
+              <p className="text-base md:text-lg lg:text-lg xl:text-xl font-sans leading-relaxed text-balance text-black">
+                Davem Energy Resources Limited delivers cost-effective Engineering, Marine, Procurement, and Logistics Solutions. Established in 2009, the company brings a rich heritage in oil spill response, soil remediation, and environmental protection.
+              </p>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-wrap gap-4 mt-6 sm:mt-8">
+                <motion.a
+                  href="#services"
+                  initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                  animate={showText ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 20, scale: 0.95 }}
+                  transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
+                  className="px-6 py-3 md:px-8 md:py-4 text-sm md:text-base text-white border-navy-600 border-2 bg-navy-600 rounded-full font-semibold transition-all shadow-lg hover:bg-navy-700 hover:border-navy-700 hover:text-white cursor-pointer inline-flex items-center justify-center text-decoration-none"
                 >
-                  DAVEM ENERGY
-                </motion.text>
-                <motion.text
-                  x="-84.98"
-                  y="4939.33"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 1.0, delay: 0.5 }}
-                  style={{
-                    fontFamily: "'Google Sans Medium', 'Inter', sans-serif",
-                    fontWeight: "500",
-                    fontSize: "1062.36px",
-                    fill: "#94ACC3"
-                  }}
+                  Learn More
+                </motion.a>
+               
+                <motion.button
+                  onClick={() => openCalendly()}
+                  initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                  animate={showText ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 20, scale: 0.95 }}
+                  transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
+                  className="px-6 py-3 md:px-8 md:py-4 text-sm md:text-base text-steel-500 border-steel-500 border-2 rounded-full font-semibold transition-all shadow-lg hover:bg-steel-500 hover:text-white cursor-pointer"
                 >
-                  RESOURCES LTD.
-                </motion.text>
-              </g>
-            )}
-          </svg>
-        </motion.div>
-      </div>
-
-      {/* Hero Paragraph - Slides up below the logo after logo reaches its position */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={showText ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="absolute top-[235px] md:top-[300px] left-6 md:left-[80px] w-[calc(100%-3rem)] md:w-full md:max-w-3xl text-left"
-      >
-        <p className="text-base md:text-lg font-sans leading-relaxed text-balance text-black">
-          Davem Energy Resources Limited delivers cost-effective Engineering, Marine, Procurement, and Logistics Solutions. Established in 2009, the company brings a rich heritage in oil spill response, soil remediation, and environmental protection.
-        </p>
-
-        {/* CTA Buttons */}
-        <div className="flex flex-wrap gap-4 mt-8">
-          <motion.a
-            href="#services"
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
-            animate={showText ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 20, scale: 0.95 }}
-            transition={{ duration: 0.5, ease: "easeOut", delay: 1.0 }}
-            className="px-6 py-3 md:px-8 md:py-4 text-sm md:text-base text-white border-navy-600 border-2 bg-navy-600 rounded-full font-semibold transition-all shadow-lg hover:bg-navy-700 hover:border-navy-700 hover:text-white cursor-pointer inline-flex items-center justify-center text-decoration-none"
-          >
-            Learn More
-          </motion.a>
-         
-          <motion.button
-            onClick={() => openCalendly()}
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
-            animate={showText ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 20, scale: 0.95 }}
-            transition={{ duration: 0.5, ease: "easeOut", delay: 1.0 }}
-            className="px-6 py-3 md:px-8 md:py-4 text-sm md:text-base text-steel-500 border-steel-500 border-2 rounded-full font-semibold transition-all shadow-lg hover:bg-steel-500 hover:text-white cursor-pointer"
-          >
-            Book Call / Get Quote
-          </motion.button>
+                  Book Call / Get Quote
+                </motion.button>
+              </div>
+            </motion.div>
+          )}
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }
